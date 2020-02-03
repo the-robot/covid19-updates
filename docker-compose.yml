@@ -1,0 +1,22 @@
+version: '3'
+services:
+  database:
+    image: mongo:latest
+    container_name: corona-db
+
+    volumes:
+      - ~/.docker/mongodb/data/db/:/data/db/
+      - ~/.docker/mongodb/data/log/:/var/log/mongodb/
+      - ./.docker/mongodb/initdb.d/:/docker-entrypoint-initdb.d/
+
+    env_file:
+      - .env
+
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+
+    ports:
+      - "27017:27017"
+
+    command: "mongod --auth"

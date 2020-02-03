@@ -1,0 +1,22 @@
+{
+  "name": "corona-updates",
+  "version": "1.0.0",
+  "description": "API to pull coronavirus data",
+  "main": "index.js",
+  "scripts": {
+    "start-bot": "node --experimental-modules src/bot/index.mjs",
+    "start-scheduler": "node --experimental-modules src/tasks/index.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cheerio": "^1.0.0-rc.3",
+    "cron": "^1.8.2",
+    "moment": "^2.24.0",
+    "mongodb": "^3.5.2",
+    "node-telegram-bot-api": "^0.40.0",
+    "rss-parser": "^3.7.4"
+  }
+}
