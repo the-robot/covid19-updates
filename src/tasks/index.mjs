@@ -12,14 +12,14 @@ const CronJob = cron.CronJob;
 
 
 const getCoronaOverallDataTask = new CronJob('0 0 * * *', () => {
-  // NOTE: run every 30 mins
+  // NOTE: run everyday at midnight
   pullCoronaOverallData().then(() => {
     console.log('[+] Pull Coronavirus Daily Cases Overall Data');
   });
 });
 
-const getCoronaDataTask = new CronJob('*/30 * * * *', () => {
-  // NOTE: run every 30 mins
+const getCoronaDataTask = new CronJob('0 * * * *', () => {
+  // NOTE: run every hour
   pullCoronaCasesData().then(() => {
     console.log('[+] Pull Coronavirus Cases Data');
   });
