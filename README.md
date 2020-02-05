@@ -14,4 +14,4 @@ Common signs of infection include respiratory symptoms, fever, cough, shortness 
 
 You can message the bot directly or add to the group. When you add to the group, make sure to **mention** `(@coronaexe_bot /command)` the bot to communicate.
 
-<img src="https://i.imgur.com/plz3FKA.jpg" alt="screenshot" width="300" height="600">
+<img src="https://i.imgur.com/JRA5zwY.jpg" alt="screenshot" width="300" height="600">
