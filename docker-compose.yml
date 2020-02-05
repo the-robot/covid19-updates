@@ -18,5 +18,7 @@ services:
 
     ports:
       - "27017:27017"
+      
+    restart: on-failure
 
     command: "mongod --auth"
