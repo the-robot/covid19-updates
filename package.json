@@ -4,8 +4,9 @@
   "description": "API to pull coronavirus data",
   "main": "index.js",
   "scripts": {
-    "start-bot": "node --experimental-modules src/bot/index.mjs",
-    "start-scheduler": "node --experimental-modules src/tasks/index.mjs",
+    "start-bot": "node --experimental-modules src/bot/app.mjs",
+    "start-scheduler": "node --experimental-modules src/tasks/app.mjs",
+    "start-web": "node --experimental-modules src/web/app.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
