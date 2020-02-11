@@ -1,7 +1,7 @@
 {
-  "name": "corona-updates",
+  "name": "ncov-monitor",
   "version": "1.0.0",
-  "description": "API to pull coronavirus data",
+  "description": "System to get lastest information about Novel Coronavirus (2019-nCov)",
   "main": "index.js",
   "scripts": {
     "start-bot": "node -r esm src/bot/app.js",
