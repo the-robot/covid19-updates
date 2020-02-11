@@ -1,0 +1,34 @@
+.container {
+  margin: 0;
+}
+
+
+/* Header */
+.header {
+  background-color: #EEEEEE;
+  padding: var(--layout-padding);
+}
+
+.header .title {
+  font-size: 58px;
+  font-weight: bolder;
+}
+
+.header .subTitle {
+  font-size: 32px;
+}
+
+.header p {
+  margin: 0;
+}
+
+
+/* Footer */
+.footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.footer .link {
+  font-size: 14px;
+}
