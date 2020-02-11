@@ -9,7 +9,6 @@
     "start-web": "node src/web/app.js",
 
     "setup-db": "node -r esm src/setup/run.js",
-
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
