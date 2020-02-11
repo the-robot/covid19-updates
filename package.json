@@ -4,9 +4,12 @@
   "description": "API to pull coronavirus data",
   "main": "index.js",
   "scripts": {
-    "start-bot": "node --experimental-modules src/bot/app.mjs",
-    "start-scheduler": "node --experimental-modules src/tasks/app.mjs",
-    "start-web": "node --experimental-modules src/web/app.mjs",
+    "start-bot": "node -r esm src/bot/app.js",
+    "start-scheduler": "node -r esm src/tasks/app.js",
+    "start-web": "node src/web/app.js",
+
+    "setup-db": "node -r esm src/setup/run.js",
+
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,10 +17,19 @@
   "dependencies": {
     "axios": "^0.19.2",
     "cheerio": "^1.0.0-rc.3",
+    "cookie-parser": "^1.4.4",
     "cron": "^1.8.2",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "express-react-views": "^0.11.0",
+    "http-errors": "^1.7.3",
     "moment": "^2.24.0",
     "mongodb": "^3.5.2",
+    "morgan": "^1.9.1",
     "node-telegram-bot-api": "^0.40.0",
+    "path": "^0.12.7",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
     "rss-parser": "^3.7.4"
   }
 }

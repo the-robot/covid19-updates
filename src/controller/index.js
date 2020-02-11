@@ -8,8 +8,8 @@ import {
   getNews,
   getRedditPosts,
   getTweets,
-} from '../db/index.mjs';
-import { getRssFeeds, sortArticleByOldest } from './utils.mjs';
+} from '../db';
+import { getRssFeeds, sortArticleByOldest } from './utils';
 
 // Statistic Data URL
 const CORONA_METER = {

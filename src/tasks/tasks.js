@@ -5,14 +5,14 @@ import {
   insertNewsIfNotExists,
   insertRedditIfNotExists,
   insertTweetIfNotExists,
-} from '../db/index.mjs';
+} from '../db';
 import {
   getCoronaOverall,
   getCoronaCountries,
   getNewsFromRss,
   getRedditPostsFromRss,
   getTwitterPostsFromRss
-} from '../controller/index.mjs';
+} from '../controller';
 
 
 const pullCoronaOverallData = async () => {

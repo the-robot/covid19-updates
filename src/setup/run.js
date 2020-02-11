@@ -1,5 +1,5 @@
-import { NEWS_RSS, REDDIT_RSS, TWITTER_RSS } from './sources.mjs';
-import { insertNewsSource, insertRedditSource, insertTweetSource } from '../db/setupFacade.mjs';
+import { NEWS_RSS, REDDIT_RSS, TWITTER_RSS } from './sources';
+import { insertNewsSource, insertRedditSource, insertTweetSource } from '../db/setupFacade';
 
 
 const setupNews = async () => {

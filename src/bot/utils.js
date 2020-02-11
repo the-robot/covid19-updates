@@ -1,4 +1,4 @@
-import { BOT_TOKEN, BOT_USERNAME } from '../config.mjs';
+import { BOT_TOKEN, BOT_USERNAME } from '../config';
 import TelegramBot from 'node-telegram-bot-api';
 
 const getBot = () => {

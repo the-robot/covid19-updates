@@ -6,7 +6,7 @@ import {
   pullNews,
   pullReddit,
   pullTweets,
-} from './tasks.mjs';
+} from './tasks';
 
 const CronJob = cron.CronJob;
 

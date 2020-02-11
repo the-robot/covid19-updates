@@ -1,12 +1,12 @@
-import { ABOUT_VIRUS, GITHUB_URL } from './constant.mjs';
+import { ABOUT_VIRUS, GITHUB_URL } from './constant';
 import {
   getCoronaCountries,
   getCoronaOverall,
   getLatestNews,
   getLatestRedditPosts,
   getLatestTweets,
-} from '../controller/index.mjs';
-import { getBot, shouldReply } from './utils.mjs';
+} from '../controller';
+import { getBot, shouldReply } from './utils';
 
 // get bot instant
 const bot = getBot();

@@ -1,6 +1,6 @@
 import mongodb from 'mongodb';
 
-import { MONGO_CONFIG } from '../config.mjs';
+import { MONGO_CONFIG } from '../config';
 import {
   // sources
   getNewsSources,
@@ -19,7 +19,7 @@ import {
   insertNewsIfNotExists,
   insertRedditIfNotExists,
   insertTweetIfNotExists,
-} from './facade.mjs';
+} from './facade';
 
 const getDb = () => {
   const { protocol, host, port, username, password, db } = MONGO_CONFIG;

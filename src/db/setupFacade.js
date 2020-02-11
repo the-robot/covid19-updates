@@ -1,7 +1,7 @@
 // Facade Method for setup script
 
-import { MONGO_CONFIG } from '../config.mjs';
-import { getDb } from './index.mjs';
+import { MONGO_CONFIG } from '../config';
+import { getDb } from '.';
 
 const { collections: COLLECTIONS, db: DATABASE } = MONGO_CONFIG;
 
