@@ -20,7 +20,7 @@ bot.onText(/\/check/, msg => {
         } else {
           let reply = `<b>Cases</b>: ${result.cases}\n`;
           reply += `<b>Deaths</b>: ${result.deaths}\n`;
-          reply += `<b>Cured</b>: ${result.cured}\n`;
+          reply += `<b>Recovered</b>: ${result.cured}\n`;
 
           bot.sendMessage(msg.chat.id, reply, {parse_mode : "HTML"});
         }
@@ -45,7 +45,7 @@ bot.onText(/\/stats/, msg => {
       //   ? `New Deaths: ${countries[i].todayDeaths}\n`
       //   : '';
       reply += parseInt(countries[i].cured) > 0
-        ? `Cured: ${countries[i].cured}\n`
+        ? `Recovered: ${countries[i].cured}\n`
         : '';
       reply += parseInt(countries[i].critical) > 0
         ? `Critical: ${countries[i].critical}\n\n`

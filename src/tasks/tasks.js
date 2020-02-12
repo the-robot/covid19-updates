@@ -71,7 +71,7 @@ const boradcastCasesOverview = async () => {
   const overall = await getCoronaOverall();
   let message = `<b>Cases</b>: ${overall.cases}\n`;
   message += `<b>Deaths</b>: ${overall.deaths}\n`;
-  message += `<b>Cured</b>: ${overall.cured}\n`;
+  message += `<b>Recovered</b>: ${overall.cured}\n`;
 
   // send broadcast message to subscribed channels
   for (let i=0; i < channels.length; i++) {
