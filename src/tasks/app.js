@@ -3,6 +3,7 @@ import cron from 'cron';
 import {
   // broadcast methods
   boradcastCasesOverview,
+  broadcastCountryCases,
 
   // data pulling methods
   pullCoronaCasesData,
@@ -56,10 +57,16 @@ const broadcastCasesOverviewTask = new CronJob('0 * * * *', () => {
   boradcastCasesOverview();
 });
 
+const broadcastCasesOverviewTask = new CronJob('0 0 * * *', () => {
+  // NOTE: run everyday at midnight
+  broadcastCountryCases();
+});
+
 // start tasks
 getCoronaOverallDataTask.start();
 getCoronaDataTask.start();
 getRedditTask.start();
 getTweetsTask.start();
 getNewsAndBroadcastTask.start();
+broadcastCasesOverviewTask.start();
 broadcastCasesOverviewTask.start();

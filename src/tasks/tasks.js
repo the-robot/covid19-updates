@@ -69,15 +69,60 @@ const boradcastCasesOverview = async () => {
   }
 
   const overall = await getCoronaOverall();
-  let message = `<b>Cases</b>: ${overall.cases}\n`;
-  message += `<b>Deaths</b>: ${overall.deaths}\n`;
-  message += `<b>Recovered</b>: ${overall.cured}\n`;
+  let message = `<b>Infections & Deaths Updates</b>\n`;
+  message += `Cases: ${overall.cases}\n`;
+  message += `Deaths: ${overall.deaths}\n`;
+  message += `Recovered: ${overall.cured}\n`;
 
   // send broadcast message to subscribed channels
   for (let i=0; i < channels.length; i++) {
     sendMessage(channels[i].name, message, {parse_mode : "HTML"});
   }
 };
+
+const broadcastCountryCases = async () => {
+  const buildInHtml = countries => {
+    let reply = `<b>Confirmed Cases & Deaths</b>\n\n`;
+
+    for (let i=0; i<countries.length; i+=1) {
+      reply += `<i><b>${i+1}. ${countries[i].country}</b></i> (${countries[i].region})\n`;
+      reply += `Cases: ${countries[i].cases}\n`;
+      // reply += parseInt(countries[i].todayCases) > 0
+      //   ? `New Cases: ${countries[i].todayCases}\n`
+      //   : '';
+      reply += parseInt(countries[i].deaths) > 0
+        ? `Deaths: ${countries[i].deaths}\n`
+        : '';
+      // reply += parseInt(countries[i].todayDeaths) > 0
+      //   ? `New Deaths: ${countries[i].todayDeaths}\n`
+      //   : '';
+      reply += parseInt(countries[i].cured) > 0
+        ? `Recovered: ${countries[i].cured}\n`
+        : '';
+      reply += parseInt(countries[i].critical) > 0
+        ? `Critical: ${countries[i].critical}\n\n`
+        : '\n';
+    }
+
+    reply += `<pre>Total ${countries.length} countries with confirmed cases and deaths.</pre>`;
+    return reply;
+  };
+
+  const channels = await getTelegramChannels();
+  if (!channels || channels.length === 0) {
+    return;
+  }
+  const countries = await getCoronaCountries();
+  if (!countries || countries.length === 0) {
+    return;
+  }
+
+  const message = buildInHtml(countries);
+  // send broadcast message to subscribed channels
+  for (let i=0; i < channels.length; i++) {
+    sendMessage(channels[i].name, message, {parse_mode : "HTML"});
+  }
+}
 
 const broadcastLatestNews = async (news) => {
   const message = `<a href="${news.link}">${news.title}</a> <code>(${news.articleSource.short_name})</code>\n\n`; 
@@ -100,4 +145,5 @@ export {
   pullReddit,
   pullTweets,
   boradcastCasesOverview,
+  broadcastCountryCases,
 };
