@@ -1,4 +1,4 @@
-import { ABOUT_VIRUS, GITHUB_URL } from './constant';
+import { ABOUT_VIRUS, GITHUB_URL, TELEGRAM_CHANNEL } from './constant';
 import {
   getCoronaCountries,
   getCoronaOverall,
@@ -141,6 +141,7 @@ bot.onText(/\/start/, msg => {
     reply += '<i><b>/tweets</b></i> to get latest tweets about coronavirus from twitter\n';
     reply += '<i><b>/check</b></i> to get the number of coronavirus cases\n';
     reply += '<i><b>/stats</b></i> to get the number of cases in infected countries\n\n';
+    reply += `You can also join <a href="@${TELEGRAM_CHANNEL}">@${TELEGRAM_CHANNEL}</a> to get latest news about virus\n`;
     reply += `Learn more about <a href="${ABOUT_VIRUS}">Coronavirus</a>\n`;
     reply += `This bot is open source and can find the code on <a href="${GITHUB_URL}">Github</a>`;
 
@@ -156,6 +157,7 @@ bot.onText(/\/help/, msg => {
     reply += '<i><b>/tweets</b></i> to get latest tweets about coronavirus from twitter\n';
     reply += '<i><b>/check</b></i> to get the number of coronavirus cases\n';
     reply += '<i><b>/stats</b></i> to get the number of cases in infected countries\n\n';
+    reply += `You can also join <a href="@${TELEGRAM_CHANNEL}">@${TELEGRAM_CHANNEL}</a> to get latest news about virus\n`;
     reply += `Learn more about <a href="${ABOUT_VIRUS}">Coronavirus</a>\n`;
     reply += `This bot is open source and can find the code on <a href="${GITHUB_URL}">Github</a>`;
 
