@@ -62,6 +62,7 @@ const broadcastCasesOverviewTask = new CronJob('0 0 * * *', () => {
   broadcastCountryCases();
 });
 
+
 // start tasks
 getCoronaOverallDataTask.start();
 getCoronaDataTask.start();
