@@ -6,6 +6,7 @@ import {
   getNewsSources,
   getRedditSources,
   getTweetSources,
+  getTelegramChannels,
 
   // get data
   getNews,
@@ -39,6 +40,7 @@ export {
   getNewsSources,
   getRedditSources,
   getTweetSources,
+  getTelegramChannels,
 
   // get data
   getNews,

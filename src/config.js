@@ -20,6 +20,9 @@ const MONGO_CONFIG = {
     redditSource: 'reddit_source',
     tweets: 'tweets',
     tweetSource: 'tweets_source',
+
+    // telegram
+    telegramChannels: 'telegram_channels',
   },
 };
 

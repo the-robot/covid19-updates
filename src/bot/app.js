@@ -164,3 +164,18 @@ bot.onText(/\/help/, msg => {
 });
 
 bot.on("polling_error", (err) => console.log(err));
+
+
+// send message method
+const sendMessage = async (username, message, options={}) => {
+  try {
+    const chat = await bot.getChat(`@${username}`);
+    const { id: chatId } = chat;
+    bot.sendMessage(chatId, message, options);
+  }
+  catch (err) {
+    console.error(`Failed to get chat id for @${username}`);
+  }
+};
+
+export { sendMessage };

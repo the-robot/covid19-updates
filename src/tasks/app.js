@@ -1,9 +1,13 @@
 import cron from 'cron';
 
 import {
+  // broadcast methods
+  boradcastCasesOverview,
+
+  // data pulling methods
   pullCoronaCasesData,
   pullCoronaOverallData,
-  pullNews,
+  pullNewsAndBroadcast,
   pullReddit,
   pullTweets,
 } from './tasks';
@@ -11,6 +15,7 @@ import {
 const CronJob = cron.CronJob;
 
 
+// NOTE: Data pulling and braodcasting methods
 const getCoronaOverallDataTask = new CronJob('0 0 * * *', () => {
   // NOTE: run everyday at midnight
   pullCoronaOverallData().then(() => {
@@ -22,13 +27,6 @@ const getCoronaDataTask = new CronJob('0 * * * *', () => {
   // NOTE: run every hour
   pullCoronaCasesData().then(() => {
     console.log('[+] Pull Coronavirus Cases Data');
-  });
-});
-
-const getNewsTask = new CronJob('*/5 * * * *', () => {
-  // NOTE: run every 5 mins
-  pullNews().then(() => {
-    console.log('[+] Pull Coronavirus News');
   });
 });
 
@@ -46,10 +44,22 @@ const getTweetsTask = new CronJob('*/5 * * * *', () => {
   });
 });
 
+const getNewsAndBroadcastTask = new CronJob('*/5 * * * *', () => {
+  // NOTE: run every 5 mins
+  pullNewsAndBroadcast().then(() => {
+    console.log('[+] Pull Coronavirus News & Broadcasting');
+  });
+});
+
+const broadcastCasesOverviewTask = new CronJob('0 * * * *', () => {
+  // NOTE: run every hour
+  boradcastCasesOverview();
+});
 
 // start tasks
 getCoronaOverallDataTask.start();
 getCoronaDataTask.start();
-getNewsTask.start();
 getRedditTask.start();
 getTweetsTask.start();
+getNewsAndBroadcastTask.start();
+broadcastCasesOverviewTask.start();

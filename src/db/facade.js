@@ -60,6 +60,7 @@ const insertNewsIfNotExists = async document => {
   }
 
   await client.close();
+  return !found; // to indicate if news is added or not
 };
 
 const insertRedditIfNotExists = async document => {
@@ -154,11 +155,21 @@ const getTweets = async (offset, size) => {
   return records;
 };
 
+// TODO: get list of channels from DB
+const getTelegramChannels = async (offset, size) => {
+  const client = getDb();
+  await client.connect();
+  const dbo = client.db(DATABASE);
+  const records = await dbo.collection(COLLECTIONS.telegramChannels).find({}).toArray();
+  return records;
+};
+
 export {
   // sources
   getNewsSources,
   getRedditSources,
   getTweetSources,
+  getTelegramChannels,
 
   // get data
   getNews,
