@@ -57,7 +57,7 @@ const broadcastCasesOverviewTask = new CronJob('0 * * * *', () => {
   boradcastCasesOverview();
 });
 
-const broadcastCasesOverviewTask = new CronJob('0 0 * * *', () => {
+const broadcastCountryCasesTask = new CronJob('0 0 * * *', () => {
   // NOTE: run everyday at midnight
   broadcastCountryCases();
 });
@@ -70,4 +70,4 @@ getRedditTask.start();
 getTweetsTask.start();
 getNewsAndBroadcastTask.start();
 broadcastCasesOverviewTask.start();
-broadcastCasesOverviewTask.start();
+broadcastCountryCasesTask.start();
