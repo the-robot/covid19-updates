@@ -69,7 +69,7 @@ const boradcastCasesOverview = async () => {
   }
 
   const overall = await getCoronaOverall();
-  let message = `<b>Infections & Deaths Updates</b>\n`;
+  let message = `<b>Infections & Deaths Update</b>\n`;
   message += `Cases: ${overall.cases}\n`;
   message += `Deaths: ${overall.deaths}\n`;
   message += `Recovered: ${overall.cured}\n`;
