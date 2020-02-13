@@ -11,7 +11,7 @@
     "build-react": "./node_modules/browserify/bin/cmd.js -t ./node_modules/babelify/index.js src/web/views/dynamic/main.js --standalone main -o src/web/public/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "the-robot",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2",
