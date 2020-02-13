@@ -5,7 +5,16 @@ const routes = require('./urls');
 
 // Dashboard
 router.get(routes.index, (req, res, next) => {
-  res.render('index', { title: 'COVID-19 - Dashboard' });
+  const props = {
+    title: 'COVID-19 - Dashboard',
+
+    // TODO: pull data from mongo
+    cases: 60379,
+    deaths: 1369,
+    recovered: 6079,
+  };
+
+  res.render('home', props);
 });
 
 // Prevention

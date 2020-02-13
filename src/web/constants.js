@@ -1,4 +1,4 @@
-const APP_TITLE = 'COVID-19 Monitor';
+const APP_TITLE = 'COVID-19 Updates';
 const TELEGRAM_BOT = 'https://t.me/coronaexe_bot';
 const TELEGRAM_CHANNEL = 'https://t.me/novelcov19';
 

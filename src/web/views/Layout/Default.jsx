@@ -49,7 +49,7 @@ const Default = props => {
           {sidebar}
         </FlexboxGrid.Item>
 
-        <FlexboxGrid.Item colspan={7} className='content-container'>
+        <FlexboxGrid.Item colspan={19} className='content-container'>
           {props.children}
         </FlexboxGrid.Item>
       </FlexboxGrid>
