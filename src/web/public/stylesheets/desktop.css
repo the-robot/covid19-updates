@@ -1,25 +1,34 @@
-.container {
-  margin: 0;
+/* Home Container */
+.home-container {
+  height: 100%;
 }
 
+.content-container {
+  height: 100%;
+  padding: 20px;
+};
 
-/* Header */
-.header {
-  background-color: #EEEEEE;
-  padding: var(--layout-padding);
+
+/* Sidebar/Menubar */
+.sidebar {
+  height: 100%;
+  max-width: 250px;
 }
 
-.header .title {
-  font-size: 58px;
-  font-weight: bolder;
+.sidebar .sidebar-container {
+  height: 100%;
+  width: 100%;
+  max-width: 250px;
 }
 
-.header .subTitle {
-  font-size: 32px;
+.sidebar .sidebar-nav {
+  height: 100%;
 }
 
-.header p {
-  margin: 0;
+.sidebar .title {
+  font-size: 21px;
+  font-weight: bold;
+  padding: 20px;
 }
 
 

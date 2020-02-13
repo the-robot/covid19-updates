@@ -2,15 +2,6 @@
   body {
     padding-left: 0px !important;
     padding-right: 0px !important;
-    width: 95%;
-  }
-
-  .header {
-    padding: 20px !important;
-  }
-
-  .home-container {
-    padding-left: 20px !important;
-    padding-right: 20px !important;
+    width: 100%;
   }
 }

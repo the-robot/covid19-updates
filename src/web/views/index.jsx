@@ -7,7 +7,7 @@ const Index = props => {
   const { title } = props;
 
   return (
-    <Layout title={title}>
+    <Layout activeSidebarIndex={0} title={title}>
       <h1> Hello World </h1>
     </Layout>
   );
