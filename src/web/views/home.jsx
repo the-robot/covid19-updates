@@ -42,17 +42,14 @@ const Index = props => {
     recovered,
   } = props;
 
+  // Dynamic Components
   const graphsHtml = ReactDOMServer.renderToString(<Graphs />);
-  const initScript = 'main(' + JSON.stringify(props).replace(/script/g, 'scr"+"ipt') + ')';
 
   return (
-    <Layout activeSidebarIndex={0} title={title}>
+    <Layout activeSidebarIndex={0} title={title} childProps={props}>
       <OverviewCounts cases={cases} deaths={deaths} recovered={recovered} />
 
-      <div id="graphs" dangerouslySetInnerHTML={{__html: graphsHtml}} />
-
-      <script src="/main.js" />
-      <script dangerouslySetInnerHTML={{__html: initScript}} />
+      <div id="home-graphs" dangerouslySetInnerHTML={{__html: graphsHtml}} />
     </Layout>
   );
 };

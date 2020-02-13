@@ -10,7 +10,7 @@ import CONSTANTS from '../../constants';
 
 
 const Default = props => {
-  const { activeSidebarIndex, title } = props;
+  const { activeSidebarIndex, title, childProps } = props;
   const { APP_TITLE: sidebarTitle, TELEGRAM_CHANNEL } = CONSTANTS;
 
   const sidebar = (
@@ -37,6 +37,9 @@ const Default = props => {
     </div>
   );
 
+  // Dynamic React Views
+  const initScript = 'main(' + JSON.stringify(childProps).replace(/script/g, 'scr"+"ipt') + ')';
+
   return (
     <React.Fragment>
       <head>
@@ -53,6 +56,9 @@ const Default = props => {
           {props.children}
         </FlexboxGrid.Item>
       </FlexboxGrid>
+
+      <script src="/main.js" />
+      <script dangerouslySetInnerHTML={{__html: initScript}} />
     </React.Fragment>
    );
 };
@@ -60,6 +66,11 @@ const Default = props => {
 Default.propTypes = {
   children: PropTypes.element.isRequired,
   title: PropTypes.string.isRequired,
+  componentProps: PropTypes.object,
+};
+
+Default.defaultProps = {
+  componentProps: {},
 };
 
 export default Default;

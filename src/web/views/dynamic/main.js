@@ -1,8 +1,11 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var Graphs = require('./Home/Graphs.jsx');
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-module.exports = function(data, containerId) {
-  var container = document.getElementById(containerId || 'graphs');
-  ReactDOM.render(<Graphs {...data} />, container);
+// Dynamic Components
+import Graphs from './Home/Graphs.jsx';
+
+module.exports = data => {
+  // views/home.jsx
+  const homeGraphsContainer = document.getElementById('home-graphs');
+  ReactDOM.hydrate(<Graphs {...data} />, homeGraphsContainer);
 };
