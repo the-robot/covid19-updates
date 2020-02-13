@@ -1,9 +1,21 @@
 const express = require('express');
 const router = express.Router();
 
-// Home
-router.get('/', (req, res, next) => {
-  res.render('index', { title: 'COVID-19 Monitor' });
+const routes = require('./urls');
+
+// Dashboard
+router.get(routes.index, (req, res, next) => {
+  res.render('index', { title: 'COVID-19 - Dashboard' });
 });
 
-module.exports = router;
+// Prevention
+router.get(routes.prevention, (req, res, next) => {
+  res.render('prevention', { title: 'COVID-19 - Prevention' });
+});
+
+// About
+router.get(routes.about, (req, res, next) => {
+  res.render('about', { title: 'COVID-19 - About' });
+});
+
+module.exports = { router, routes};

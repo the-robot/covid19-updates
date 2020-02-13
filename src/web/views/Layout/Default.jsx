@@ -2,26 +2,33 @@ import { FlexboxGrid, Icon, Nav, Sidenav } from 'rsuite';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+// import route urls
+import { routes } from '../../routes';
+
+// import contants
+import CONSTANTS from '../../constants';
+
 
 const Default = props => {
   const { activeSidebarIndex, title } = props;
-  const sidebarTitle = 'COVID-19 Monitor';
+  const { APP_TITLE: sidebarTitle, TELEGRAM_CHANNEL } = CONSTANTS;
+
   const sidebar = (
     <div className="sidebar-container">
       <Sidenav activeKey={`sidebar-${activeSidebarIndex || 0}`} appearance="default" className="sidebar-nav">
         <Sidenav.Body>
           <p className="title">{sidebarTitle}</p>
           <Nav>
-            <Nav.Item eventKey="sidebar-0" icon={<Icon icon="dashboard" />}>
+            <Nav.Item href={routes.index} eventKey="sidebar-0" icon={<Icon icon="dashboard" />}>
               Dashboard
             </Nav.Item>
-            <Nav.Item eventKey="sidebar-1" icon={<Icon icon="heart" />}>
+            <Nav.Item href={routes.prevention} eventKey="sidebar-1" icon={<Icon icon="heart" />}>
               Prevention
             </Nav.Item>
-            <Nav.Item eventKey="sidebar-2" icon={<Icon icon="telegram" />}>
+            <Nav.Item href={TELEGRAM_CHANNEL}  eventKey="sidebar-2" icon={<Icon icon="telegram" />}>
               Telegram
             </Nav.Item>
-            <Nav.Item eventKey="sidebar-3" icon={<Icon icon="group" />}>
+            <Nav.Item href={routes.about} eventKey="sidebar-3" icon={<Icon icon="group" />}>
               About
             </Nav.Item>
           </Nav>
