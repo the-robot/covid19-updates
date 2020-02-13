@@ -7,7 +7,6 @@
     "start-bot": "node -r esm src/bot/app.js",
     "start-scheduler": "node -r esm src/tasks/app.js",
     "start-web": "node src/web/app.js",
-
     "setup-db": "node -r esm src/setup/run.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -29,6 +28,7 @@
     "path": "^0.12.7",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "rss-parser": "^3.7.4"
+    "rss-parser": "^3.7.4",
+    "rsuite": "^4.2.1"
   }
 }
