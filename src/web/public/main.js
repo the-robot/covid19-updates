@@ -32335,7 +32335,7 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.setState({
-        width: 10000
+        width: 1000
       });
     }
   }, {

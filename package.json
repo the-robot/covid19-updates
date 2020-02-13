@@ -7,8 +7,9 @@
     "bot": "node -r esm src/bot/app.js",
     "scheduler": "node -r esm src/tasks/app.js",
     "web": "node src/web/app.js",
+    "react-dev": "./node_modules/watchify/bin/cmd.js -t ./node_modules/babelify/index.js src/web/views/dynamic/main.js --standalone main -o src/web/public/main.js",
+    "react-build": "./node_modules/browserify/bin/cmd.js -t ./node_modules/babelify/index.js src/web/views/dynamic/main.js --standalone main -o src/web/public/main.js",
     "setup-db": "node -r esm src/setup/run.js",
-    "build-react": "./node_modules/browserify/bin/cmd.js -t ./node_modules/babelify/index.js src/web/views/dynamic/main.js --standalone main -o src/web/public/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "the-robot",
@@ -37,6 +38,7 @@
     "@babel/preset-env": "^7.8.4",
     "babel-preset-react": "^6.24.1",
     "babelify": "^10.0.0",
-    "browserify": "^16.5.0"
+    "browserify": "^16.5.0",
+    "watchify": "^3.11.1"
   }
 }

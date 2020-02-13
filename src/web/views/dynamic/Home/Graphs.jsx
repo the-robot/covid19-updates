@@ -11,7 +11,7 @@ class Graphs extends React.Component {
 
   componentDidMount() {
     this.setState({
-      width: 10000,
+      width: 1000,
     });
   };
 
