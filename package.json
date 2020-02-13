@@ -8,6 +8,7 @@
     "start-scheduler": "node -r esm src/tasks/app.js",
     "start-web": "node src/web/app.js",
     "setup-db": "node -r esm src/setup/run.js",
+    "build-react": "./node_modules/browserify/bin/cmd.js -t ./node_modules/babelify/index.js src/web/views/dynamic/main.js --standalone main -o src/web/public/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -31,5 +32,10 @@
     "recharts": "^2.0.0-beta.1",
     "rss-parser": "^3.7.4",
     "rsuite": "^4.2.1"
+  },
+  "devDependencies": {
+    "babel-preset-react": "^6.24.1",
+    "babelify": "^10.0.0",
+    "browserify": "^16.5.0"
   }
 }

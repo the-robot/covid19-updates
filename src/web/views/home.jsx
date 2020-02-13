@@ -43,7 +43,7 @@ const Index = props => {
   } = props;
 
   const graphsHtml = ReactDOMServer.renderToString(<Graphs />);
-  const initScript = 'xx(' + JSON.stringify(props).replace(/script/g, 'scr"+"ipt') + ')';
+  const initScript = 'main(' + JSON.stringify(props).replace(/script/g, 'scr"+"ipt') + ')';
 
   return (
     <Layout activeSidebarIndex={0} title={title}>
@@ -51,7 +51,7 @@ const Index = props => {
 
       <div id="graphs" dangerouslySetInnerHTML={{__html: graphsHtml}} />
 
-      <script src="/dynamic/home.js" />
+      <script src="/main.js" />
       <script dangerouslySetInnerHTML={{__html: initScript}} />
     </Layout>
   );

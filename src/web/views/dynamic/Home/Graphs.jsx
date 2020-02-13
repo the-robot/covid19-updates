@@ -1,4 +1,4 @@
-import React from 'react';
+var React = require('react');
 
 class Graphs extends React.Component {
   constructor(props) {
@@ -22,4 +22,4 @@ class Graphs extends React.Component {
   }
 };
 
-export default Graphs;
+module.exports = Graphs;

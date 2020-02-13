@@ -1,6 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var Graphs = require('../../views/dynamic/Home/Graphs');
+var Graphs = require('./Home/Graphs.jsx');
 
 module.exports = function(data, containerId) {
   var container = document.getElementById(containerId || 'graphs');
