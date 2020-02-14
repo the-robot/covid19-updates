@@ -63,7 +63,7 @@ class Graphs extends React.Component {
 
         <LineGraph
           data={recoveredGraphData}
-          width={this.state.width * 0.9}
+          width={this.state.width * 0.85}
           height={this.state.width * 0.6}
           maxHeight={250}
           dataKey="count"

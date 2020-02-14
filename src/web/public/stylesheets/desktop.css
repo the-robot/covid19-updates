@@ -12,7 +12,7 @@
   overflow-x: hidden;
   overflow-y: scroll;
   padding-left: 10px;
-  padding-right: 15px;
+  padding-right: 10px;
 }
 
 
@@ -104,6 +104,7 @@
 .table-container {
   background-color: #f1f2f6;
   border-radius: 5px;
+  margin-bottom: 10px;
   padding: 20px;
 }
 

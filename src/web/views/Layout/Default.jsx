@@ -53,7 +53,7 @@ const Default = props => {
 
       <Grid fluid className='home-container'>
         <Row className='row'>
-          <Col sm={8} md={5} className='sidebar' style={{ height: '100%', maxWidth: '250px' }}>
+          <Col sm={8} md={5} className='sidebar' style={{ height: '100%', maxWidth: '250px', padding: 0 }}>
             {sidebar}
           </Col>
           <Col className='content-container'>
