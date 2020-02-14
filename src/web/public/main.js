@@ -75559,145 +75559,76 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _recharts = require("recharts");
 
-var _LineGraph = _interopRequireDefault(require("./LineGraph.jsx"));
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+var BarGraph = function BarGraph(props) {
+  var data = props.data,
+      dataKey1 = props.dataKey1,
+      dataKey2 = props.dataKey2,
+      height = props.height,
+      margin = props.margin,
+      maxHeight = props.maxHeight,
+      strokeColor1 = props.strokeColor1,
+      strokeColor2 = props.strokeColor2,
+      title = props.title,
+      width = props.width,
+      xAxisKey = props.xAxisKey;
+  return _react["default"].createElement("div", {
+    className: "graph"
+  }, _react["default"].createElement("p", {
+    className: "title"
+  }, title), _react["default"].createElement(_recharts.BarChart, {
+    width: width,
+    height: maxHeight > 0 ? height <= maxHeight ? height : maxHeight : height,
+    data: data,
+    margin: margin
+  }, _react["default"].createElement(_recharts.CartesianGrid, {
+    strokeDasharray: "5 5"
+  }), _react["default"].createElement(_recharts.XAxis, {
+    dataKey: xAxisKey
+  }), _react["default"].createElement(_recharts.YAxis, null), _react["default"].createElement(_recharts.Tooltip, null), _react["default"].createElement(_recharts.Legend, null), _react["default"].createElement(_recharts.Bar, {
+    dataKey: dataKey1,
+    fill: strokeColor1
+  }), _react["default"].createElement(_recharts.Bar, {
+    dataKey: dataKey2,
+    fill: strokeColor2
+  })));
+};
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var lineData = [{
-  name: 'Page A',
-  pv: 2400,
-  amt: 2400
-}, {
-  name: 'Page B',
-  pv: 1398,
-  amt: 2210
-}, {
-  name: 'Page C',
-  pv: 9800,
-  amt: 2290
-}, {
-  name: 'Page D',
-  pv: 3908,
-  amt: 2000
-}, {
-  name: 'Page E',
-  pv: 4800,
-  amt: 2181
-}, {
-  name: 'Page F',
-  pv: 3800,
-  amt: 2500
-}, {
-  name: 'Page G',
-  pv: 4300,
-  amt: 2100
-}];
-
-var Graphs =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(Graphs, _React$Component);
-
-  function Graphs(props) {
-    var _this;
-
-    _classCallCheck(this, Graphs);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Graphs).call(this, props));
-
-    _defineProperty(_assertThisInitialized(_this), "handleContainerResize", function (e) {
-      var width = _this.containerRef.current.offsetWidth;
-
-      _this.setState({
-        width: width
-      });
-    });
-
-    _this.state = {
-      width: 0
-    };
-    _this.containerRef = _react["default"].createRef();
-    return _this;
-  }
-
-  _createClass(Graphs, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      window.addEventListener("resize", this.handleContainerResize);
-      this.handleContainerResize();
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      window.removeEventListener("resize", this.handleContainerResize);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return _react["default"].createElement("div", {
-        ref: this.containerRef,
-        className: "graphs-container"
-      }, _react["default"].createElement(_LineGraph["default"], {
-        data: lineData,
-        width: this.state.width,
-        height: this.state.width / 2.5,
-        maxHeight: 250,
-        dataKey: "pv",
-        xAxisKey: "name",
-        title: "Infections",
-        strokeColor: "#ffa502"
-      }), _react["default"].createElement(_LineGraph["default"], {
-        data: lineData,
-        width: this.state.width,
-        height: this.state.width / 2.5,
-        maxHeight: 250,
-        dataKey: "pv",
-        xAxisKey: "name",
-        title: "Deaths",
-        strokeColor: "#eb4d4b"
-      }), _react["default"].createElement(_LineGraph["default"], {
-        data: lineData,
-        width: this.state.width,
-        height: this.state.width / 2.5,
-        maxHeight: 250,
-        dataKey: "pv",
-        xAxisKey: "name",
-        title: "Recovered",
-        strokeColor: "#2ecc71"
-      }));
-    }
-  }]);
-
-  return Graphs;
-}(_react["default"].Component);
-
-;
-var _default = Graphs;
+BarGraph.propTypes = {
+  data: _propTypes["default"].array.isRequired,
+  dataKey1: _propTypes["default"].string.isRequired,
+  dataKey2: _propTypes["default"].string.isRequired,
+  height: _propTypes["default"].number.isRequired,
+  width: _propTypes["default"].number.isRequired,
+  title: _propTypes["default"].string.isRequired,
+  xAxisKey: _propTypes["default"].string.isRequired,
+  margin: _propTypes["default"].object,
+  maxHeight: _propTypes["default"].number,
+  strokeColor1: _propTypes["default"].string,
+  strokeColor2: _propTypes["default"].string
+};
+BarGraph.defaultProps = {
+  margin: {
+    top: 20,
+    right: 120,
+    left: 0,
+    bottom: 10
+  },
+  maxHeight: -1,
+  strokeColor1: '#000000',
+  strokeColor2: '#4d4d4d'
+};
+var _default = BarGraph;
 exports["default"] = _default;
 
-},{"./LineGraph.jsx":471,"react":288}],471:[function(require,module,exports){
+},{"prop-types":251,"react":288,"recharts":331}],471:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -75773,6 +75704,201 @@ exports["default"] = _default;
 },{"prop-types":251,"react":288,"recharts":331}],472:[function(require,module,exports){
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _BarGraph = _interopRequireDefault(require("../../Components/BarGraph.jsx"));
+
+var _LineGraph = _interopRequireDefault(require("../../Components/LineGraph.jsx"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var lineData = [{
+  name: 'Page A',
+  pv: 2400,
+  amt: 2400
+}, {
+  name: 'Page B',
+  pv: 1398,
+  amt: 2210
+}, {
+  name: 'Page C',
+  pv: 9800,
+  amt: 2290
+}, {
+  name: 'Page D',
+  pv: 3908,
+  amt: 2000
+}, {
+  name: 'Page E',
+  pv: 4800,
+  amt: 2181
+}, {
+  name: 'Page F',
+  pv: 3800,
+  amt: 2500
+}, {
+  name: 'Page G',
+  pv: 4300,
+  amt: 2100
+}];
+var barData = [{
+  name: 'Page A',
+  uv: 4000,
+  pv: 2400,
+  amt: 2400
+}, {
+  name: 'Page B',
+  uv: 3000,
+  pv: 1398,
+  amt: 2210
+}, {
+  name: 'Page C',
+  uv: 2000,
+  pv: 9800,
+  amt: 2290
+}, {
+  name: 'Page D',
+  uv: 2780,
+  pv: 3908,
+  amt: 2000
+}, {
+  name: 'Page E',
+  uv: 1890,
+  pv: 4800,
+  amt: 2181
+}, {
+  name: 'Page F',
+  uv: 2390,
+  pv: 3800,
+  amt: 2500
+}, {
+  name: 'Page G',
+  uv: 3490,
+  pv: 4300,
+  amt: 2100
+}];
+
+var Graphs =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Graphs, _React$Component);
+
+  function Graphs(props) {
+    var _this;
+
+    _classCallCheck(this, Graphs);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Graphs).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_this), "handleContainerResize", function (e) {
+      var width = _this.containerRef.current.offsetWidth;
+
+      _this.setState({
+        width: width
+      });
+    });
+
+    _this.state = {
+      width: 0
+    };
+    _this.containerRef = _react["default"].createRef();
+    return _this;
+  }
+
+  _createClass(Graphs, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      window.addEventListener("resize", this.handleContainerResize);
+      this.handleContainerResize();
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      window.removeEventListener("resize", this.handleContainerResize);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return _react["default"].createElement("div", {
+        ref: this.containerRef,
+        className: "graphs-container"
+      }, _react["default"].createElement(_LineGraph["default"], {
+        data: lineData,
+        width: this.state.width,
+        height: this.state.width / 2.5,
+        maxHeight: 250,
+        dataKey: "pv",
+        xAxisKey: "name",
+        title: "Infections",
+        strokeColor: "#ffa502"
+      }), _react["default"].createElement(_LineGraph["default"], {
+        data: lineData,
+        width: this.state.width,
+        height: this.state.width / 2.5,
+        maxHeight: 250,
+        dataKey: "pv",
+        xAxisKey: "name",
+        title: "Deaths",
+        strokeColor: "#eb4d4b"
+      }), _react["default"].createElement(_LineGraph["default"], {
+        data: lineData,
+        width: this.state.width,
+        height: this.state.width / 2.5,
+        maxHeight: 250,
+        dataKey: "pv",
+        xAxisKey: "name",
+        title: "Recovered",
+        strokeColor: "#2ecc71"
+      }), _react["default"].createElement(_BarGraph["default"], {
+        data: barData,
+        width: this.state.width,
+        height: this.state.width / 2.5,
+        maxHeight: 250,
+        dataKey1: "pv",
+        dataKey2: "uv",
+        xAxisKey: "name",
+        title: "Infections & Deaths Comparison",
+        strokeColor1: "#ffa502",
+        strokeColor2: "#eb4d4b"
+      }));
+    }
+  }]);
+
+  return Graphs;
+}(_react["default"].Component);
+
+;
+var _default = Graphs;
+exports["default"] = _default;
+
+},{"../../Components/BarGraph.jsx":470,"../../Components/LineGraph.jsx":471,"react":288}],473:[function(require,module,exports){
+"use strict";
+
 var _react = _interopRequireDefault(require("react"));
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
@@ -75789,5 +75915,5 @@ module.exports = function (data) {
   _reactDom["default"].hydrate(_react["default"].createElement(_Graphs["default"], data), homeGraphsContainer);
 };
 
-},{"./Home/Graphs.jsx":470,"react":288,"react-dom":257}]},{},[472])(472)
+},{"./Home/Graphs.jsx":472,"react":288,"react-dom":257}]},{},[473])(473)
 });

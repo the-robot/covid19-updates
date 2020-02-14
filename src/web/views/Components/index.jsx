@@ -1,4 +1,4 @@
-import AreaChart from './AreaChart';
 import Card from './Card';
+import LineGraph from './LineGraph';
 
-export { AreaChart, Card };
+export { Card, LineGraph };
