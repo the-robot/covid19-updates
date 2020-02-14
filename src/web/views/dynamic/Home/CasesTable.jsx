@@ -1,36 +1,30 @@
 import { FlexboxGrid } from 'rsuite';
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import DataTable from '../../Components/DataTable.jsx';
 
-const fakeData = [
-  {
-    "id": 1,
-    "firstName": "Ernest",
-    "count": 820,
-    "level": <p>X</p>
-  },
-  {
-    "id": 2,
-    "firstName": "Ernest",
-    "count": 820,
-    "level": <p>X</p>
-  },
-];
 
 class CasesTable extends React.Component {
   render() {
+    const { infectionsTableData, deathsTableData } = this.props;
+
     return (
       <FlexboxGrid justify="space-around">
         <FlexboxGrid.Item colspan={11}>
-          <DataTable summaryColor='#FFA503' title='infections' data={fakeData} />
+          <DataTable summaryColor='#FFA503' title='infections' data={infectionsTableData} />
         </FlexboxGrid.Item>
         <FlexboxGrid.Item colspan={11}>
-          <DataTable summaryColor='#C0392C' title='deaths' data={fakeData} />
+          <DataTable summaryColor='#C0392C' title='deaths' data={deathsTableData} />
         </FlexboxGrid.Item>
       </FlexboxGrid>
     );
-  };
+  }
+}
+
+CasesTable.propTypes = {
+  infectionsTableData: PropTypes.array.isRequired,
+  deathsTableData: PropTypes.array.isRequired,
 }
 
 export default CasesTable;

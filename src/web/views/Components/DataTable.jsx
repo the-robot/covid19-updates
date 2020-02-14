@@ -96,7 +96,7 @@ class DataTable extends React.Component {
             <Cell dataKey="level"/>
           </Column>
 
-          <Column width={containerWidth * 0.5} align='left'>
+          <Column width={containerWidth * 0.4} align='left'>
             <HeaderCell style={{ fontSize: '16px'}}>Country</HeaderCell>
             <Cell dataKey="firstName"/>
           </Column>
@@ -120,6 +120,7 @@ DataTable.propTypes = {
 };
 
 DataTable.defaultProps = {
+  data: [],
   summaryColor: '#000000',
 };
 

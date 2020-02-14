@@ -14,10 +14,10 @@ const OverviewCounts = props => {
   return (
     <FlexboxGrid justify="space-around">
       <FlexboxGrid.Item colspan={7}>
-        <Card color='#ffa502' count={cases} message={'people confirmed infected'} title={'Infections'} />
+        <Card color='#ffa502' count={cases} message={'confirmed infected'} title={'Infections'} />
       </FlexboxGrid.Item>
       <FlexboxGrid.Item colspan={7}>
-        <Card color='#c0392b' count={deaths} message={'people confirmed dead'} title={'Deaths'} />
+        <Card color='#c0392b' count={deaths} message={'confirmed dead'} title={'Deaths'} />
       </FlexboxGrid.Item>
       <FlexboxGrid.Item colspan={7}>
         <Card color='#2ecc71' count={recovered} message={'people recovered'} title={'Recovered'} />

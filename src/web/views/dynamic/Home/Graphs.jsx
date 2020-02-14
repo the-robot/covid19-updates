@@ -1,56 +1,8 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import BarGraph from '../../Components/BarGraph.jsx';
 import LineGraph from '../../Components/LineGraph.jsx';
-
-
-const lineData = [
-  {
-    name: 'Page A', pv: 2400, amt: 2400,
-  },
-  {
-    name: 'Page B', pv: 1398, amt: 2210,
-  },
-  {
-    name: 'Page C', pv: 9800, amt: 2290,
-  },
-  {
-    name: 'Page D', pv: 3908, amt: 2000,
-  },
-  {
-    name: 'Page E', pv: 4800, amt: 2181,
-  },
-  {
-    name: 'Page F', pv: 3800, amt: 2500,
-  },
-  {
-    name: 'Page G', pv: 4300, amt: 2100,
-  },
-];
-
-const barData = [
-  {
-    name: 'Page A', uv: 4000, pv: 2400, amt: 2400,
-  },
-  {
-    name: 'Page B', uv: 3000, pv: 1398, amt: 2210,
-  },
-  {
-    name: 'Page C', uv: 2000, pv: 9800, amt: 2290,
-  },
-  {
-    name: 'Page D', uv: 2780, pv: 3908, amt: 2000,
-  },
-  {
-    name: 'Page E', uv: 1890, pv: 4800, amt: 2181,
-  },
-  {
-    name: 'Page F', uv: 2390, pv: 3800, amt: 2500,
-  },
-  {
-    name: 'Page G', uv: 3490, pv: 4300, amt: 2100,
-  },
-];
 
 
 class Graphs extends React.Component {
@@ -78,48 +30,55 @@ class Graphs extends React.Component {
   };
 
   render() {
+    const {
+      infectionsGraphData,
+      deathsGraphData,
+      recoveredGraphData,
+      infectionsDeathsGraphData,
+    } = this.props;
+
     return (
       <div ref={this.containerRef} className='graphs-container'>
         <LineGraph
-          data={lineData}
+          data={infectionsGraphData}
           width={this.state.width}
           height={this.state.width / 2.5}
           maxHeight={250}
-          dataKey="pv"
+          dataKey="number"
           xAxisKey="name"
           title="Infections"
           strokeColor="#ffa502"
         />
 
         <LineGraph
-          data={lineData}
+          data={deathsGraphData}
           width={this.state.width}
           height={this.state.width / 2.5}
           maxHeight={250}
-          dataKey="pv"
+          dataKey="number"
           xAxisKey="name"
           title="Deaths"
           strokeColor="#eb4d4b"
         />
 
         <LineGraph
-          data={lineData}
+          data={recoveredGraphData}
           width={this.state.width}
           height={this.state.width / 2.5}
           maxHeight={250}
-          dataKey="pv"
+          dataKey="number"
           xAxisKey="name"
           title="Recovered"
           strokeColor="#2ecc71"
         />
 
         <BarGraph
-          data={barData}
+          data={infectionsDeathsGraphData}
           width={this.state.width}
           height={this.state.width / 2.5}
           maxHeight={250}
-          dataKey1="pv"
-          dataKey2="uv"
+          dataKey1="infection"
+          dataKey2="death"
           xAxisKey="name"
           title="Infections &amp; Deaths Comparison"
           strokeColor1="#ffa502"
@@ -128,6 +87,13 @@ class Graphs extends React.Component {
       </div>
     );
   };
+};
+
+Graphs.propTypes = {
+  infectionsGraphData: PropTypes.array.isRequired,
+  deathsGraphData: PropTypes.array.isRequired,
+  recoveredGraphData: PropTypes.array.isRequired,
+  infectionsDeathsGraphData: PropTypes.array.isRequired,
 };
 
 export default Graphs;
