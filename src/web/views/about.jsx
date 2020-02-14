@@ -7,7 +7,7 @@ const About = props => {
   const { title } = props;
 
   return (
-    <Layout activeSidebarIndex={3} title={title}>
+    <Layout activeSidebarIndex={4} title={title} childProps={props}>
       <h1> About </h1>
     </Layout>
   );

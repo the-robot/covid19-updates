@@ -17,6 +17,11 @@ router.get(routes.index, (req, res, next) => {
   res.render('home', props);
 });
 
+// News
+router.get(routes.news, (req, res, next) => {
+  res.render('news', { title: 'COVID-19 - News' });
+});
+
 // Prevention
 router.get(routes.prevention, (req, res, next) => {
   res.render('prevention', { title: 'COVID-19 - Prevention' });

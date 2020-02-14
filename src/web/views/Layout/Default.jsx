@@ -22,13 +22,16 @@ const Default = props => {
             <Nav.Item href={routes.index} eventKey="sidebar-0" icon={<Icon icon="dashboard" />}>
               Dashboard
             </Nav.Item>
-            <Nav.Item href={routes.prevention} eventKey="sidebar-1" icon={<Icon icon="heart" />}>
+            <Nav.Item href={routes.news} eventKey="sidebar-1" icon={<Icon icon="heart" />}>
+              News
+            </Nav.Item>
+            <Nav.Item href={routes.prevention} eventKey="sidebar-2" icon={<Icon icon="heart" />}>
               Prevention
             </Nav.Item>
-            <Nav.Item href={TELEGRAM_CHANNEL}  eventKey="sidebar-2" icon={<Icon icon="telegram" />}>
+            <Nav.Item href={TELEGRAM_CHANNEL}  eventKey="sidebar-3" icon={<Icon icon="telegram" />}>
               Telegram
             </Nav.Item>
-            <Nav.Item href={routes.about} eventKey="sidebar-3" icon={<Icon icon="group" />}>
+            <Nav.Item href={routes.about} eventKey="sidebar-4" icon={<Icon icon="group" />}>
               About
             </Nav.Item>
           </Nav>
