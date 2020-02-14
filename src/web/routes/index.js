@@ -7,25 +7,25 @@ const routes = require('./urls');
 router.get(routes.index, (req, res, next) => {
   const lineData = [
     {
-      name: 'Page A', number: 2400, amt: 2400,
+      name: 'Page A', count: 2400, amt: 2400,
     },
     {
-      name: 'Page B', number: 1398, amt: 2210,
+      name: 'Page B', count: 1398, amt: 2210,
     },
     {
-      name: 'Page C', number: 9800, amt: 2290,
+      name: 'Page C', count: 9800, amt: 2290,
     },
     {
-      name: 'Page D', number: 3908, amt: 2000,
+      name: 'Page D', count: 3908, amt: 2000,
     },
     {
-      name: 'Page E', number: 4800, amt: 2181,
+      name: 'Page E', count: 4800, amt: 2181,
     },
     {
-      name: 'Page F', number: 3800, amt: 2500,
+      name: 'Page F', count: 3800, amt: 2500,
     },
     {
-      name: 'Page G', number: 4300, amt: 2100,
+      name: 'Page G', count: 4300, amt: 2100,
     },
   ];
   

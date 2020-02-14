@@ -44,7 +44,7 @@ class Graphs extends React.Component {
           width={this.state.width}
           height={this.state.width / 2.5}
           maxHeight={250}
-          dataKey="number"
+          dataKey="count"
           xAxisKey="name"
           title="Infections"
           strokeColor="#ffa502"
@@ -55,7 +55,7 @@ class Graphs extends React.Component {
           width={this.state.width}
           height={this.state.width / 2.5}
           maxHeight={250}
-          dataKey="number"
+          dataKey="count"
           xAxisKey="name"
           title="Deaths"
           strokeColor="#eb4d4b"
@@ -66,7 +66,7 @@ class Graphs extends React.Component {
           width={this.state.width}
           height={this.state.width / 2.5}
           maxHeight={250}
-          dataKey="number"
+          dataKey="count"
           xAxisKey="name"
           title="Recovered"
           strokeColor="#2ecc71"
