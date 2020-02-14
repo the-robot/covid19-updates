@@ -1,5 +1,33 @@
 import React from 'react';
 
+import LineGraph from './LineGraph.jsx';
+
+
+const lineData = [
+  {
+    name: 'Page A', pv: 2400, amt: 2400,
+  },
+  {
+    name: 'Page B', pv: 1398, amt: 2210,
+  },
+  {
+    name: 'Page C', pv: 9800, amt: 2290,
+  },
+  {
+    name: 'Page D', pv: 3908, amt: 2000,
+  },
+  {
+    name: 'Page E', pv: 4800, amt: 2181,
+  },
+  {
+    name: 'Page F', pv: 3800, amt: 2500,
+  },
+  {
+    name: 'Page G', pv: 4300, amt: 2100,
+  },
+];
+
+
 class Graphs extends React.Component {
   constructor(props) {
     super(props);
@@ -26,10 +54,41 @@ class Graphs extends React.Component {
 
   render() {
     return (
-      <div ref={this.containerRef}>
-        <p>{this.state.width}</p>
+      <div ref={this.containerRef} className='graphs-container'>
+        <LineGraph
+          data={lineData}
+          width={this.state.width}
+          height={this.state.width / 2.5}
+          maxHeight={250}
+          dataKey="pv"
+          xAxisKey="name"
+          title="Infections"
+          strokeColor="#ffa502"
+        />
+
+        <LineGraph
+          data={lineData}
+          width={this.state.width}
+          height={this.state.width / 2.5}
+          maxHeight={250}
+          dataKey="pv"
+          xAxisKey="name"
+          title="Deaths"
+          strokeColor="#eb4d4b"
+        />
+
+        <LineGraph
+          data={lineData}
+          width={this.state.width}
+          height={this.state.width / 2.5}
+          maxHeight={250}
+          dataKey="pv"
+          xAxisKey="name"
+          title="Recovered"
+          strokeColor="#2ecc71"
+        />
       </div>
-    )
+    );
   };
 };
 

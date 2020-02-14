@@ -65,6 +65,24 @@
 }
 
 
+/* Graph */
+.graphs-container {
+  margin-top: 20px;
+}
+
+.graphs-container .graph {
+  background-color: #f1f2f6;
+  border-radius: 5px;
+  margin: 20px;
+  padding: 20px;
+}
+
+.graphs-container .title {
+  font-size: 21px;
+  font-weight: bold;
+}
+
+
 /* Footer */
 .footer {
   margin-top: 20px;
