@@ -1,5 +1,5 @@
 // credentials
-const BOT_TOKEN = '';
+const BOT_TOKEN = '1071289569:AAFzIG4V4r6Omv8HzF9TY__HJ3YROnyM6Bs';
 const BOT_USERNAME = 'coronaexe_bot';
 
 const MONGO_CONFIG = {

@@ -7,19 +7,30 @@ class Graphs extends React.Component {
     this.state = {
       width: 0,
     };
-  }
+    this.containerRef = React.createRef()
+  };
 
   componentDidMount() {
-    this.setState({
-      width: 1000,
-    });
+    window.addEventListener("resize", this.handleContainerResize);
+    this.handleContainerResize();
+  };
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.handleContainerResize);
+  };
+
+  handleContainerResize = e => {
+    const width = this.containerRef.current.offsetWidth;
+    this.setState({ width });
   };
 
   render() {
     return (
-      <p> {this.state.width } </p>
+      <div ref={this.containerRef}>
+        <p>{this.state.width}</p>
+      </div>
     )
-  }
+  };
 };
 
 export default Graphs;
