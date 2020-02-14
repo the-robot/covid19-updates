@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
 import { Card } from './Components';
+import CasesTable from './dynamic/Home/CasesTable';
 import Graphs from './dynamic/Home/Graphs';
 import Layout from './Layout/Default';
 
@@ -35,21 +36,24 @@ OverviewCounts.propTypes = {
 const Index = props => {
   const {
     title,
-
-    // overview data
-    cases,
-    deaths,
-    recovered,
+    overviewData,
   } = props;
 
   // Dynamic Components
   const graphsHtml = ReactDOMServer.renderToString(<Graphs />);
+  const tablesHtml = ReactDOMServer.renderToString(<CasesTable />);
 
   return (
     <Layout activeSidebarIndex={0} title={title} childProps={props}>
-      <OverviewCounts cases={cases} deaths={deaths} recovered={recovered} />
+      <OverviewCounts
+        cases={overviewData.cases}
+        deaths={overviewData.deaths}
+        recovered={overviewData.recovered}
+      />
 
+      {/* Dynamic Contents */}
       <div id="home-graphs" dangerouslySetInnerHTML={{__html: graphsHtml}} />
+      <div id="home-cases-tables" dangerouslySetInnerHTML={{__html: tablesHtml}} />
     </Layout>
   );
 };

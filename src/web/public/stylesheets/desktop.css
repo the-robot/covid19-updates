@@ -30,7 +30,7 @@
 }
 
 .sidebar .title {
-  color: #ffffff;
+  color: var(--primary-accent-color);
   font-size: 21px;
   font-weight: bold;
   padding: 20px;
@@ -82,6 +82,40 @@
 .graphs-container .title {
   font-size: 18px;
   font-weight: bold;
+}
+
+
+/* Table */
+.table-container {
+  background-color: #f1f2f6;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.table-container .title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+
+.table-container .level {
+  border-radius: 4px;
+  padding: 2px;
+}
+
+.table-container .level-text {
+  color: #ffffff;
+  font-size: 10.5px;
+  font-weight: bold;
+}
+
+.table-container .rs-table, .rs-table-row, .rs-table-row-header, .rs-table-cell-content {
+  background-color: #f1f2f6 !important;
+}
+
+.table-container .rs-table-row {
+  border-bottom: 0.8px solid #dbdbdb;
 }
 
 
