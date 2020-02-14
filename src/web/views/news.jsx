@@ -4,11 +4,11 @@ import Layout from './Layout/Default';
 
 
 const News = props => {
-  const { title } = props;
+  const { title, page } = props;
 
   return (
     <Layout activeSidebarIndex={1} title={title} childProps={props}>
-      <h1> News </h1>
+      <h1> News {page} </h1>
     </Layout>
   );
 };
