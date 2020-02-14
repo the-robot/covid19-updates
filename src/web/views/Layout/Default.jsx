@@ -1,4 +1,4 @@
-import { FlexboxGrid, Icon, Nav, Sidenav } from 'rsuite';
+import { Col, Grid, Icon, Nav, Row, Sidenav } from 'rsuite';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -48,17 +48,19 @@ const Default = props => {
       <head>
         <title>{title}</title>
         <link rel="stylesheet" href="/stylesheets/style.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       </head>
 
-      <FlexboxGrid className='home-container'>
-        <FlexboxGrid.Item colspan={5} className='sidebar' style={{ height: '100%', maxWidth: '250px' }}>
-          {sidebar}
-        </FlexboxGrid.Item>
-
-        <FlexboxGrid.Item colspan={19} className='content-container'>
-          {props.children}
-        </FlexboxGrid.Item>
-      </FlexboxGrid>
+      <Grid fluid className='home-container'>
+        <Row className='row'>
+          <Col sm={8} md={5} className='sidebar' style={{ height: '100%', maxWidth: '250px' }}>
+            {sidebar}
+          </Col>
+          <Col sm={16} md={19}>
+            {props.children}
+          </Col>
+        </Row>
+      </Grid>
 
       <script src="/main.js" />
       <script dangerouslySetInnerHTML={{__html: initScript}} />

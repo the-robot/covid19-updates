@@ -1,4 +1,4 @@
-import { FlexboxGrid } from 'rsuite';
+import { Col, Grid, Row } from 'rsuite';
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
@@ -12,17 +12,19 @@ import Layout from './Layout/Default';
 const OverviewCounts = props => {
   const { cases, deaths, recovered } = props;
   return (
-    <FlexboxGrid justify="space-around">
-      <FlexboxGrid.Item colspan={7}>
-        <Card color='#ffa502' count={cases} message={'confirmed infected'} title={'Infections'} />
-      </FlexboxGrid.Item>
-      <FlexboxGrid.Item colspan={7}>
-        <Card color='#c0392b' count={deaths} message={'confirmed dead'} title={'Deaths'} />
-      </FlexboxGrid.Item>
-      <FlexboxGrid.Item colspan={7}>
-        <Card color='#2ecc71' count={recovered} message={'people recovered'} title={'Recovered'} />
-      </FlexboxGrid.Item>
-    </FlexboxGrid>
+    <Grid fluid>
+      <Row>
+        <Col xs={24} sm={8}>
+          <Card color='#ffa502' count={cases} message={'confirmed infected'} title={'Infections'} />
+        </Col>
+        <Col xs={24} sm={8}>
+          <Card color='#c0392b' count={deaths} message={'confirmed dead'} title={'Deaths'} />  
+        </Col>
+        <Col xs={24} sm={8}>
+          <Card color='#2ecc71' count={recovered} message={'people recovered'} title={'Recovered'} />
+        </Col>
+      </Row>
+    </Grid>
   );
 };
 

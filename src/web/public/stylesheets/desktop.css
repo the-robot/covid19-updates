@@ -3,13 +3,17 @@
   height: 100%;
 }
 
+.home-container .row {
+  height: 100%;
+}
+
 .content-container {
   height: 100%;
   width: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
   padding: 20px;
-};
+}
 
 
 /* Sidebar/Menubar */
@@ -43,6 +47,8 @@
   border-radius: 5px;
   padding: 15px;
   width: 100%;
+
+  margin-top: 15px;
 }
 
 .card .title {
