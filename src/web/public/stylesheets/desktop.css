@@ -9,10 +9,10 @@
 
 .content-container {
   height: 100%;
-  width: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
-  padding: 20px;
+  padding-left: 10px;
+  padding-right: 15px;
 }
 
 
@@ -75,14 +75,23 @@
 
 /* Graph */
 .graphs-container {
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 .graphs-container .graph {
   background-color: #f1f2f6;
   border-radius: 5px;
-  margin: 20px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 10px;
+  overflow-x: hidden;
   padding: 20px;
+}
+
+.graphs-container .recharts-wrapper {
+  /* center the graphs */
+  margin: 0 auto;
 }
 
 .graphs-container .title {

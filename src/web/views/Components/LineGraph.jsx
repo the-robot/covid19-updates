@@ -55,7 +55,7 @@ LineGraph.propTypes = {
 
 LineGraph.defaultProps = {
   margin: {
-    top: 20, right: 120, left: 0, bottom: 10,
+    top: 20, right: 0, left: 0, bottom: 0,
   },
   maxHeight: -1,
   strokeColor: '#000000',

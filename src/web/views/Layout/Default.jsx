@@ -56,7 +56,7 @@ const Default = props => {
           <Col sm={8} md={5} className='sidebar' style={{ height: '100%', maxWidth: '250px' }}>
             {sidebar}
           </Col>
-          <Col sm={16} md={19}>
+          <Col className='content-container'>
             {props.children}
           </Col>
         </Row>

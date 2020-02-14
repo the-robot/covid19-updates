@@ -41,8 +41,8 @@ class Graphs extends React.Component {
       <div ref={this.containerRef} className='graphs-container'>
         <LineGraph
           data={infectionsGraphData}
-          width={this.state.width}
-          height={this.state.width / 2.5}
+          width={this.state.width * 0.85}
+          height={this.state.width * 0.6}
           maxHeight={250}
           dataKey="count"
           xAxisKey="name"
@@ -52,8 +52,8 @@ class Graphs extends React.Component {
 
         <LineGraph
           data={deathsGraphData}
-          width={this.state.width}
-          height={this.state.width / 2.5}
+          width={this.state.width * 0.85}
+          height={this.state.width * 0.6}
           maxHeight={250}
           dataKey="count"
           xAxisKey="name"
@@ -63,8 +63,8 @@ class Graphs extends React.Component {
 
         <LineGraph
           data={recoveredGraphData}
-          width={this.state.width}
-          height={this.state.width / 2.5}
+          width={this.state.width * 0.9}
+          height={this.state.width * 0.6}
           maxHeight={250}
           dataKey="count"
           xAxisKey="name"
@@ -74,8 +74,8 @@ class Graphs extends React.Component {
 
         <BarGraph
           data={infectionsDeathsGraphData}
-          width={this.state.width}
-          height={this.state.width / 2.5}
+          width={this.state.width * 0.85}
+          height={this.state.width * 0.6}
           maxHeight={250}
           dataKey1="infection"
           dataKey2="death"
