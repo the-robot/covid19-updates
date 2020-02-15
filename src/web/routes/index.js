@@ -140,7 +140,7 @@ router.get(`${routes.api.news}:page/`, async (req, res, next) => {
   res.status(200).json({
     data: news,
     page: page,
-    total_pages: Math.ceil(totalRecords / parseFloat(PAGINATION_SIZE))
+    total_pages: Math.ceil(totalRecords / parseFloat(PAGINATION_SIZE)) - 1,
   });
 });
 
@@ -168,7 +168,7 @@ router.get(`${routes.api.reddit}:page/`, async (req, res, next) => {
   res.status(200).json({
     data: posts,
     page: page,
-    total_pages: Math.ceil(totalRecords / parseFloat(PAGINATION_SIZE))
+    total_pages: Math.ceil(totalRecords / parseFloat(PAGINATION_SIZE)) -1,
   });
 });
 
@@ -196,7 +196,7 @@ router.get(`${routes.api.tweets}:page/`, async (req, res, next) => {
   res.status(200).json({
     data: tweets,
     page: page,
-    total_pages: Math.ceil(totalRecords / parseFloat(PAGINATION_SIZE))
+    total_pages: Math.ceil(totalRecords / parseFloat(PAGINATION_SIZE)) - 1,
   });
 });
 

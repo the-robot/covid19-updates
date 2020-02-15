@@ -1,4 +1,4 @@
-import { Icon, IconButton, Timeline } from 'rsuite';
+import { ButtonToolbar, Icon, IconButton, Timeline } from 'rsuite';
 import React from 'react';
 import axios from 'axios';
 
@@ -59,7 +59,7 @@ class Reddit extends React.Component {
 
   getData = () => {
     const { page } = this.state;
-    axios.get(`${routes.api.reddit}/${page}`)
+    axios.get(`${routes.api.reddit}${page}`)
         .then(res => {
           const { data, page, total_pages } = res.data;
           this.setState({
@@ -80,7 +80,7 @@ class Reddit extends React.Component {
   };
 
   render() {
-    const { data, refreshing } = this.state;
+    const { data, loading, page, maxPage, refreshing } = this.state;
 
     return (
       <div className='feed'>
@@ -88,14 +88,14 @@ class Reddit extends React.Component {
         <IconButton
           appearance="subtle"
           className='refresh'
-          disabled={refreshing}
+          disabled={loading||refreshing}
           size="sm"
           icon={<Icon icon="refresh" spin={refreshing} />}
           onClick={this.refresh}
         />
         <br clear='both'/>
 
-        {refreshing ? (
+        {loading||refreshing ? (
           <div className='loader'>
             <Icon icon="circle-o-notch" size='2x' pulse />
           </div>
@@ -109,6 +109,30 @@ class Reddit extends React.Component {
             ))}
           </Timeline>
         )}
+
+        <ButtonToolbar className='paginator'>
+          <IconButton
+            disabled={loading || refreshing || (page === 1)}
+            appearance="subtle"
+            icon={<Icon icon="chevron-left" />}
+            placement="left"
+            onClick={this.previousPage}
+          >
+            Prev
+          </IconButton>
+          { page && maxPage ? (
+            <span className='page'>{page}/{maxPage}</span>
+          ) : null}
+          <IconButton
+            disabled={loading || refreshing || (page === maxPage)}
+            appearance="subtle"
+            icon={<Icon icon="chevron-right" />}
+            placement="right"
+            onClick={this.nextPage}
+          >
+            Next
+          </IconButton>
+        </ButtonToolbar>
       </div>
     );
   };

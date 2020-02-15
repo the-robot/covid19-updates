@@ -202,18 +202,15 @@
 }
 
 .news-container .feed .paginator {
+  margin-top: 10px;
+}
+
+.news-container .feed .paginator .page {
   color: #8d8d8d;
 }
 
-.news-container .feed .news-list {
+.news-container .feed .news-list, .reddit-list, .tweets-list {
   height: 82.5%;
-  margin-top: 10px;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-.news-container .feed .reddit-list, .tweets-list {
-  height: 90%;
   margin-top: 10px;
   overflow-x: hidden;
   overflow-y: auto;

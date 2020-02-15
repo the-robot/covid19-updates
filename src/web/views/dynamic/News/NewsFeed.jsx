@@ -58,7 +58,7 @@ class NewsFeed extends React.Component {
 
   getData = () => {
     const { page } = this.state;
-    axios.get(`${routes.api.news}/${page}`)
+    axios.get(`${routes.api.news}${page}`)
         .then(res => {
           const { data, page, total_pages } = res.data;
           this.setState({
@@ -109,7 +109,7 @@ class NewsFeed extends React.Component {
           </Timeline>
         )}
 
-        <ButtonToolbar>
+        <ButtonToolbar className='paginator'>
           <IconButton
             disabled={loading || refreshing || (page === 1)}
             appearance="subtle"
@@ -120,7 +120,7 @@ class NewsFeed extends React.Component {
             Prev
           </IconButton>
           { page && maxPage ? (
-            <span className='paginator'>{page}/{maxPage}</span>
+            <span className='page'>{page}/{maxPage}</span>
           ) : null}
           <IconButton
             disabled={loading || refreshing || (page === maxPage)}

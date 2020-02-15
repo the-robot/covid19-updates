@@ -1,5 +1,8 @@
-import { Icon, IconButton, Timeline } from 'rsuite';
+import { ButtonToolbar, Icon, IconButton, Timeline } from 'rsuite';
 import React from 'react';
+import axios from 'axios';
+
+import routes from '../../../routes/urls';
 
 
 class Tweets extends React.Component {
@@ -8,49 +11,76 @@ class Tweets extends React.Component {
 
     this.state = {
       data: [],
+      maxPage: null,
+      page: 1,
+
+      // UI states
+      loading: false,
       refreshing: false,
     }
   }
 
   componentDidMount() {
     this.setState({
-      data: [
-        {
-          title: `The government says it'll decide later this month whether to postpone exams being as #HongKong schools are closed over the #coronavirus, adding that students' lives are more important. But one student tells RTHK the govt's approach is \"retarded\". https://news.rthk.hk/rthk/en/component/k2/1507028-20200206.htm …`,
-          link: 'https://www.independent.co.uk/news/world/asia/virus-china-wuhan-pneumonia-deaths-sars-coronavirus-infection-a9279656.html',
-          author: 'Shaun Lintern',
-          date: '2020-02-12 21:20'
-        },
-        {
-          title: `#CDC officers sending #WuhanCoronovirus infected patients off to quarantine centers. \n\nMore and more people are taken away in this manner. \n\n#Chinazi #ConcentrationCamps \n#WuhanOutbreak #WuhanLockDownpic.twitter.com/wALxkapzni`,
-          link: 'https://www.independent.co.uk/news/world/asia/virus-china-wuhan-pneumonia-deaths-sars-coronavirus-infection-a9279656.html',
-          author: 'Shaun Lintern',
-          date: '2020-02-12 08:46'
-        },
-        {
-          title: `#CDC officers sending #WuhanCoronovirus infected patients off to quarantine centers. \n\nMore and more people are taken away in this manner. \n\n#Chinazi #ConcentrationCamps \n#WuhanOutbreak #WuhanLockDownpic.twitter.com/wALxkapzni`,
-          link: 'https://www.independent.co.uk/news/world/asia/virus-china-wuhan-pneumonia-deaths-sars-coronavirus-infection-a9279656.html',
-          author: 'Shaun Lintern',
-          date: '2020-02-12 08:46'
-        },
-        {
-          title: `#CDC officers sending #WuhanCoronovirus infected patients off to quarantine centers. \n\nMore and more people are taken away in this manner. \n\n#Chinazi #ConcentrationCamps \n#WuhanOutbreak #WuhanLockDownpic.twitter.com/wALxkapzni`,
-          link: 'https://www.independent.co.uk/news/world/asia/virus-china-wuhan-pneumonia-deaths-sars-coronavirus-infection-a9279656.html',
-          author: 'Shaun Lintern',
-          date: '2020-02-12 08:46'
-        },
-      ],
-    });
+      loading: true,
+    }, this.getData);
   }
 
   refresh = () => {
     this.setState({
+      page: 1,
       refreshing: true,
-    });
+    }, this.getData);
   }
 
+  nextPage = () => {
+    const { maxPage, page } = this.state;
+    if (page >= maxPage) {
+      return;
+    }
+
+    this.setState({
+      page: page + 1,
+      loading: true,
+    }, this.getData);
+  };
+
+  previousPage = () => {
+    const { page } = this.state;
+    if (page <= 1) {
+      return;
+    }
+
+    this.setState({
+      page: page - 1,
+      loading: true,
+    }, this.getData);
+  };
+
+  getData = () => {
+    const { page } = this.state;
+    axios.get(`${routes.api.tweets}${page}`)
+        .then(res => {
+          const { data, page, total_pages } = res.data;
+          this.setState({
+            data,
+            page,
+            maxPage: total_pages,
+            loading: false,
+            refreshing: false,
+          });
+        })
+        .catch(err => {
+          console.log(err);
+          this.setState({
+            loading: false,
+            refreshing: false,
+          });
+        });
+  };
+
   render() {
-    const { data, refreshing } = this.state;
+    const { data, loading, page, maxPage, refreshing } = this.state;
 
     return (
       <div className='feed'>
@@ -58,14 +88,14 @@ class Tweets extends React.Component {
         <IconButton
           appearance="subtle"
           className='refresh'
-          disabled={refreshing}
+          disabled={loading||refreshing}
           size="sm"
           icon={<Icon icon="refresh" spin={refreshing} />}
           onClick={this.refresh}
         />
         <br clear='both'/>
 
-        {refreshing ? (
+        {loading||refreshing ? (
           <div className='loader'>
             <Icon icon="circle-o-notch"size='2x' pulse />
           </div>
@@ -79,6 +109,30 @@ class Tweets extends React.Component {
             ))}
           </Timeline>
         )}
+
+        <ButtonToolbar className='paginator'>
+          <IconButton
+            disabled={loading || refreshing || (page === 1)}
+            appearance="subtle"
+            icon={<Icon icon="chevron-left" />}
+            placement="left"
+            onClick={this.previousPage}
+          >
+            Prev
+          </IconButton>
+          { page && maxPage ? (
+            <span className='page'>{page}/{maxPage}</span>
+          ) : null}
+          <IconButton
+            disabled={loading || refreshing || (page === maxPage)}
+            appearance="subtle"
+            icon={<Icon icon="chevron-right" />}
+            placement="right"
+            onClick={this.nextPage}
+          >
+            Next
+          </IconButton>
+        </ButtonToolbar>
       </div>
     );
   };
