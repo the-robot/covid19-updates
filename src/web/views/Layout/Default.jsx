@@ -32,7 +32,7 @@ const Default = props => {
               About COVID-19
             </Nav.Item>
             <Nav.Item href={routes.about} eventKey="sidebar-4" icon={<Icon icon="group" />}>
-              About Us
+              About
             </Nav.Item>
           </Nav>
         </Sidenav.Body>
