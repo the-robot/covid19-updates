@@ -17,3 +17,14 @@ You can message the bot directly or add to the group. When you add to the group,
 I also have a channel, [COVID-19 Updates](https://t.me/novelcov19) `(@novelcov19)`. The bot will automatically broadcast latest news and number of cases to that channel. So you can also join the broadcasting channel to get latest news without asking the bot.
 
 <img src="https://i.imgur.com/JRA5zwY.jpg" alt="screenshot" width="300" height="600">
+
+---
+
+### COVID-19 Website
+I have also created a website to see coronavirus cases and news easily. [COVID-19 Website](https://covid19.khant.dev).
+
+<img src="https://i.imgur.com/R0Ck0Ur.png" alt="website-dashboard" width="800" height="600">
+
+<img src="https://i.imgur.com/ccBiLcf.png" alt="website-news" width="800" height="600">
+
+---
