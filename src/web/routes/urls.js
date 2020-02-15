@@ -4,9 +4,9 @@ const urls = {
   about: '/about/',
 
   api: {
-    news: '/api/news/:page/',
-    reddit: '/api/reddit/:page/',
-    tweets: '/api/tweets/:page/',
+    news: '/api/news/',
+    reddit: '/api/reddit/',
+    tweets: '/api/tweets/',
   },
 };
 

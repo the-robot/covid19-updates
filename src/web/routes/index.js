@@ -116,7 +116,7 @@ router.get(routes.about, (req, res, next) => {
 
 
 // API Endpoints
-router.get(routes.api.news, async (req, res, next) => {
+router.get(`${routes.api.news}/:page/`, async (req, res, next) => {
   let { page } = req.params;
   // if page number is invalid, return 400
   if (!page || !utils.isNumber(page)) {
@@ -133,7 +133,7 @@ router.get(routes.api.news, async (req, res, next) => {
       title: newsData[i].title,
       link: newsData[i].link,
       author: newsData[i].articleSource.name,
-      date: moment(newsData[i].added_date).format('DD-MM-YYYY HH:mm'),
+      date: moment(newsData[i].isoDate).format('DD-MM-YYYY HH:mm'),
     });
   }
 
@@ -144,7 +144,7 @@ router.get(routes.api.news, async (req, res, next) => {
   });
 });
 
-router.get(routes.api.reddit, async (req, res, next) => {
+router.get(`${routes.api.reddit}/:page/`, async (req, res, next) => {
   const { page } = req.params;
   // if page number is invalid, return 400
   if (!page || !utils.isNumber(page)) {
@@ -161,7 +161,7 @@ router.get(routes.api.reddit, async (req, res, next) => {
       title: redditPostsData[i].title,
       link: redditPostsData[i].link,
       author: redditPostsData[i].articleSource.name,
-      date: moment(redditPostsData[i].added_date).format('DD-MM-YYYY HH:mm'),
+      date: moment(redditPostsData[i].isoDate).format('DD-MM-YYYY HH:mm'),
     });
   }
 
@@ -172,7 +172,7 @@ router.get(routes.api.reddit, async (req, res, next) => {
   });
 });
 
-router.get(routes.api.tweets, async (req, res, next) => {
+router.get(`${routes.api.tweets}/:page/`, async (req, res, next) => {
   const { page } = req.params;
   // if page number is invalid, return 400
   if (!page || !utils.isNumber(page)) {
@@ -189,7 +189,7 @@ router.get(routes.api.tweets, async (req, res, next) => {
       title: tweetsData[i].title,
       link: tweetsData[i].link,
       author: tweetsData[i].articleSource.name,
-      date: moment(tweetsData[i].added_date).format('DD-MM-YYYY HH:mm'),
+      date: moment(tweetsData[i].isoDate).format('DD-MM-YYYY HH:mm'),
     });
   }
 

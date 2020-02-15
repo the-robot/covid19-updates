@@ -10,7 +10,7 @@ class NewsFeed extends React.Component {
 
     this.state = {
       data: [],
-      maxPage: 10, //props.maxNewsPage,
+      maxPage: null,
       page: 1,
 
       // UI states
@@ -21,27 +21,15 @@ class NewsFeed extends React.Component {
 
   componentDidMount() {
     this.setState({
-      data: [
-        {
-          title: 'Wuhan pneumonia: First death reported by mystery Chinese virusWuhan pneumonia: First death reported by mystery Chinese virusWuhan pneumonia: First death reported by mystery Chinese virus',
-          link: 'https://www.independent.co.uk/news/world/asia/virus-china-wuhan-pneumonia-deaths-sars-coronavirus-infection-a9279656.html',
-          author: 'Shaun Lintern',
-          date: '2020-02-12 21:20'
-        },
-        {
-          title: 'Wuhan pneumonia: First death reported by mystery Chinese virus',
-          link: 'https://www.independent.co.uk/news/world/asia/virus-china-wuhan-pneumonia-deaths-sars-coronavirus-infection-a9279656.html',
-          author: 'Shaun Lintern',
-          date: '2020-02-12 08:46'
-        },
-      ],
-    });
+      loading: true,
+    }, this.getData);
   }
 
   refresh = () => {
     this.setState({
+      page: 1,
       refreshing: true,
-    });
+    }, this.getData);
   }
 
   nextPage = () => {
@@ -52,7 +40,8 @@ class NewsFeed extends React.Component {
 
     this.setState({
       page: page + 1,
-    });
+      loading: true,
+    }, this.getData);
   };
 
   previousPage = () => {
@@ -63,7 +52,30 @@ class NewsFeed extends React.Component {
 
     this.setState({
       page: page - 1,
-    });
+      loading: true,
+    }, this.getData);
+  };
+
+  getData = () => {
+    const { page } = this.state;
+    axios.get(`${routes.api.news}/${page}`)
+        .then(res => {
+          const { data, page, total_pages } = res.data;
+          this.setState({
+            data,
+            page,
+            maxPage: total_pages,
+            loading: false,
+            refreshing: false,
+          });
+        })
+        .catch(err => {
+          console.log(err);
+          this.setState({
+            loading: false,
+            refreshing: false,
+          });
+        });
   };
 
   render() {
@@ -107,6 +119,9 @@ class NewsFeed extends React.Component {
           >
             Prev
           </IconButton>
+          { page && maxPage ? (
+            <span className='paginator'>{page}/{maxPage}</span>
+          ) : null}
           <IconButton
             disabled={loading || refreshing || (page === maxPage)}
             appearance="subtle"
