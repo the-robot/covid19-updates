@@ -3,8 +3,11 @@ const router = express.Router();
 
 const routes = require('./urls');
 
+// Database
+const db = require('../../db');
+
 // Dashboard
-router.get(routes.index, (req, res, next) => {
+router.get(routes.index, async (req, res, next) => {
   const lineData = [
     {
       name: 'Page A', count: 2400, amt: 2400,
@@ -53,29 +56,59 @@ router.get(routes.index, (req, res, next) => {
     },
   ];
 
-  const fakeData = [
-    {
-      "id": 1,
-      "firstName": "Ernest",
-      "count": 820,
-    },
-    {
-      "id": 2,
-      "firstName": "Ernest",
-      "count": 820,
-    },
-  ];
 
+  // get overview data
+  const overallRecords = await db.getOverallCases();
+  const overviewData = {
+    cases: overallRecords[0].cases,
+    deaths: overallRecords[0].deaths,
+    recovered: overallRecords[0].cured,
+  };
+
+  // get cases & deaths by country
+  const countries = await db.getCountries();
+  const infectionsTableData = [];
+  const deathsTableData = [];
+  for (let i=0; i<countries.length; i++) {
+    let countryCases  = await db.getCasesByCountry(countries[i].name);
+    infectionsTableData.push({
+      "id": i + 1,
+      "country": countries[i].name,
+      "count": countryCases[0].cases,
+    });
+    deathsTableData.push({
+      "id": i + 1,
+      "country": countries[i].name,
+      "count": countryCases[0].deaths,
+    });
+  }
+  // sort by count
+  infectionsTableData.sort((a, b) => {
+    if (a.count > b.count) {
+      return -1;
+    }
+    if (b.count > a.count) {
+        return 1;
+    }
+    return 0;
+  });
+  deathsTableData.sort((a, b) => {
+    if (a.count > b.count) {
+      return -1;
+    }
+    if (b.count > a.count) {
+        return 1;
+    }
+    return 0;
+  });
+
+
+  // build prop for view
   const props = {
     title: 'COVID-19 - Dashboard',
 
-    // TODO: pull data from mongo
     // Overall Data
-    overviewData: {
-      cases: 60379,
-      deaths: 1369,
-      recovered: 6079,
-    },
+    overviewData,
 
     // Graph Data
     infectionsGraphData: lineData,
@@ -84,19 +117,8 @@ router.get(routes.index, (req, res, next) => {
     infectionsDeathsGraphData: barData,
 
     // Table Data
-    infectionsTableData: [
-      {
-        "id": 1,
-        "firstName": "Ernest",
-        "count": 820,
-      },
-      {
-        "id": 2,
-        "firstName": "Ernest",
-        "count": 820,
-      },
-    ],
-    deathsTableData: fakeData,
+    infectionsTableData,
+    deathsTableData,
   };
 
   res.render('home', props);

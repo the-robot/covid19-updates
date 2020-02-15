@@ -3,6 +3,8 @@ import { getDb } from '.';
 
 const { collections: COLLECTIONS, db: DATABASE } = MONGO_CONFIG;
 
+
+// Create
 const insertCoronaCase = async document => {
   const client = getDb();
   await client.connect();
@@ -95,6 +97,8 @@ const insertTweetIfNotExists = async document => {
   await client.close();
 };
 
+
+// Read
 const getNewsSources = async () => {
   const client = getDb();
   await client.connect();
@@ -155,7 +159,6 @@ const getTweets = async (offset, size) => {
   return records;
 };
 
-// TODO: get list of channels from DB
 const getTelegramChannels = async (offset, size) => {
   const client = getDb();
   await client.connect();
@@ -163,6 +166,39 @@ const getTelegramChannels = async (offset, size) => {
   const records = await dbo.collection(COLLECTIONS.telegramChannels).find({}).toArray();
   return records;
 };
+
+const getCountries = async () => {
+  const client = getDb();
+  await client.connect();
+  const dbo = client.db(DATABASE);
+  const records = await dbo.collection(COLLECTIONS.countries)
+    .find({})
+    .toArray();
+  return records;
+};
+
+const getOverallCases = async () => {
+  const client = getDb();
+  await client.connect();
+  const dbo = client.db(DATABASE);
+  const records = await dbo.collection(COLLECTIONS.dailyOverall)
+    .find({})
+    .sort({added_date: -1})
+    .toArray();
+  return records;
+};
+
+const getCasesByCountry = async country => {
+  const client = getDb();
+  await client.connect();
+  const dbo = client.db(DATABASE);
+  const records = await dbo.collection(COLLECTIONS.cases)
+    .find({country: country})
+    .sort({added_date: -1})
+    .toArray();
+  return records;
+};
+
 
 export {
   // sources
@@ -172,6 +208,9 @@ export {
   getTelegramChannels,
 
   // get data
+  getCountries,
+  getOverallCases,
+  getCasesByCountry,
   getNews,
   getRedditPosts,
   getTweets,

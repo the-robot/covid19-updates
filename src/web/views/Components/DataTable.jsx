@@ -98,7 +98,7 @@ class DataTable extends React.Component {
 
           <Column width={containerWidth * 0.4} align='left'>
             <HeaderCell style={{ fontSize: '16px'}}>Country</HeaderCell>
-            <Cell dataKey="firstName"/>
+            <Cell dataKey="country"/>
           </Column>
 
           <Column width={containerWidth * 0.25} align='right'>

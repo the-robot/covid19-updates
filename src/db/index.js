@@ -9,6 +9,9 @@ import {
   getTelegramChannels,
 
   // get data
+  getCountries,
+  getOverallCases,
+  getCasesByCountry,
   getNews,
   getRedditPosts,
   getTweets,
@@ -43,6 +46,9 @@ export {
   getTelegramChannels,
 
   // get data
+  getCountries,
+  getOverallCases,
+  getCasesByCountry,
   getNews,
   getRedditPosts,
   getTweets,

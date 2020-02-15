@@ -7,7 +7,7 @@ const MONGO_CONFIG = {
   host: 'localhost',
   port: '27017',
   db: 'coronadb',
-  username: 'username',
+  username: 'dbuser',
   password: 'password',
 
   collections: {
