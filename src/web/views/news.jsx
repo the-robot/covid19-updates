@@ -21,7 +21,7 @@ const News = props => {
       {/* Dynamic Contents */}
       <Grid fluid className='news-container'>
         <Row>
-          <Col colspan={24} className='newsfeed-container'>
+          <Col colSpan={24} className='newsfeed-container'>
             <div id="news-newsfeed" dangerouslySetInnerHTML={{__html: newsFeedHtml}} />
           </Col>
         </Row>

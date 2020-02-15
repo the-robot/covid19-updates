@@ -30,7 +30,7 @@ const Layout = props => {
           </Col>
 
           {/* Mobile (dynamic content) */}
-          <Col colspan={24} className='topbar'>
+          <Col colSpan={24} className='topbar'>
             <div id="layout-mobile-navbar" dangerouslySetInnerHTML={{__html: mobileNavbar}} />
           </Col>
 
@@ -48,7 +48,10 @@ const Layout = props => {
 
 Layout.propTypes = {
   activeNavIndex: PropTypes.number.isRequired,
-  children: PropTypes.element.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.element,
+  ]).isRequired,
   title: PropTypes.string.isRequired,
   componentProps: PropTypes.object,
 };

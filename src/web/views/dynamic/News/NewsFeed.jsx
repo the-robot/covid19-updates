@@ -1,6 +1,8 @@
 import { ButtonToolbar, Icon, IconButton, Timeline } from 'rsuite';
 import React from 'react';
+import axios from 'axios';
 
+import routes from '../../../routes/urls';
 
 class NewsFeed extends React.Component {
   constructor(props) {

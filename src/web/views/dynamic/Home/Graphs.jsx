@@ -90,10 +90,17 @@ class Graphs extends React.Component {
 };
 
 Graphs.propTypes = {
-  infectionsGraphData: PropTypes.array.isRequired,
-  deathsGraphData: PropTypes.array.isRequired,
-  recoveredGraphData: PropTypes.array.isRequired,
-  infectionsDeathsGraphData: PropTypes.array.isRequired,
+  infectionsGraphData: PropTypes.array,
+  deathsGraphData: PropTypes.array,
+  recoveredGraphData: PropTypes.array,
+  infectionsDeathsGraphData: PropTypes.array,
+};
+
+Graphs.defaultProps = {
+  infectionsGraphData: [],
+  deathsGraphData: [],
+  recoveredGraphData: [],
+  infectionsDeathsGraphData: [],
 };
 
 export default Graphs;

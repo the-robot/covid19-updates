@@ -25,8 +25,13 @@ class CasesTable extends React.Component {
 }
 
 CasesTable.propTypes = {
-  infectionsTableData: PropTypes.array.isRequired,
-  deathsTableData: PropTypes.array.isRequired,
+  infectionsTableData: PropTypes.array,
+  deathsTableData: PropTypes.array,
+}
+
+CasesTable.defaultProps = {
+  infectionsTableData: [],
+  deathsTableData: [],
 }
 
 export default CasesTable;
