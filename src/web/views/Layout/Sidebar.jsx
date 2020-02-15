@@ -25,7 +25,7 @@ const Sidebar = props => {
             <Nav.Item href={routes.news} eventKey="sidebar-1" icon={<Icon icon="newspaper-o" />}>
               News
             </Nav.Item>
-            <Nav.Item href={TELEGRAM_CHANNEL}  eventKey="sidebar-3" icon={<Icon icon="telegram" />}>
+            <Nav.Item href={TELEGRAM_CHANNEL} eventKey="sidebar-3" icon={<Icon icon="telegram" />}>
               Telegram Channel
             </Nav.Item>
             <Nav.Item href={WHO_URL} eventKey="sidebar-2" icon={<Icon icon="heartbeat" />}>

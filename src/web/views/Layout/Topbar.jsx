@@ -1,6 +1,8 @@
 import { Dropdown, Nav, Navbar } from 'rsuite';
-import PropTypes from 'prop-types';
 import React from 'react';
+
+// import route urls
+import routes from '../../routes/urls';
 
 // import contants
 import CONSTANTS from '../../constants';
@@ -8,8 +10,7 @@ import CONSTANTS from '../../constants';
 
 class Topbar extends React.Component {
   render() {
-    const { activeNavIndex } = this.props;
-    const { APP_TITLE: navbarTitle, TELEGRAM_CHANNEL, WHO_URL } = CONSTANTS;
+    const { TELEGRAM_CHANNEL, WHO_URL } = CONSTANTS;
 
     return (
       <div className='topbar-container'>
@@ -21,12 +22,12 @@ class Topbar extends React.Component {
           </Navbar.Header>
           <Navbar.Body>
             <Nav pullRight>
-              <Nav.Item>Home</Nav.Item>
-              <Nav.Item>News</Nav.Item>
+              <Nav.Item href={routes.index}>Home</Nav.Item>
+              <Nav.Item href={routes.news}>News</Nav.Item>
               <Dropdown title="More" placement='bottomEnd'>
-                <Dropdown.Item>Telegram Bot</Dropdown.Item>
-                <Dropdown.Item>About COVID-19</Dropdown.Item>
-                <Dropdown.Item>About</Dropdown.Item>
+                <Dropdown.Item href={TELEGRAM_CHANNEL} >Telegram Bot</Dropdown.Item>
+                <Dropdown.Item href={WHO_URL} >About COVID-19</Dropdown.Item>
+                <Dropdown.Item href={routes.about}>About</Dropdown.Item>
               </Dropdown>
             </Nav>
           </Navbar.Body>
@@ -35,13 +36,5 @@ class Topbar extends React.Component {
     );
   }
 }
-
-Topbar.propTypes = {
-  activeNavIndex: PropTypes.number.isRequired,
-};
-
-Topbar.defaultProps = {
-  activeNavIndex: 0,
-};
 
 export default Topbar;
