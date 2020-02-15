@@ -23,8 +23,8 @@ I also have a channel, [COVID-19 Updates](https://t.me/novelcov19) `(@novelcov19
 ### COVID-19 Website
 I have also created a website to see coronavirus cases and news easily. [COVID-19 Website](https://covid19.khant.dev).
 
-<img src="https://i.imgur.com/R0Ck0Ur.png" alt="website-dashboard" width="800" height="600">
+<img src="https://i.imgur.com/R0Ck0Ur.png" alt="website-dashboard" width="800" height="500">
 
-<img src="https://i.imgur.com/ccBiLcf.png" alt="website-news" width="800" height="600">
+<img src="https://i.imgur.com/ccBiLcf.png" alt="website-news" width="800" height="500">
 
 ---
