@@ -46,7 +46,7 @@ const Index = props => {
   const tablesHtml = ReactDOMServer.renderToString(<CasesTable />);
 
   return (
-    <Layout activeSidebarIndex={0} title={title} childProps={props}>
+    <Layout activeNavIndex={0} title={title} childProps={props}>
       <OverviewCounts
         cases={overviewData.cases}
         deaths={overviewData.deaths}

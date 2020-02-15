@@ -17,7 +17,7 @@ const News = props => {
   const tweetsHtml = ReactDOMServer.renderToString(<Tweets />);
 
   return (
-    <Layout activeSidebarIndex={1} title={title} childProps={props}>
+    <Layout activeNavIndex={1} title={title} childProps={props}>
       {/* Dynamic Contents */}
       <Grid fluid className='news-container'>
         <Row>

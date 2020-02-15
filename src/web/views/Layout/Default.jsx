@@ -1,47 +1,18 @@
-import { Col, Grid, Icon, Nav, Row, Sidenav } from 'rsuite';
+import { Col, Grid, Row } from 'rsuite';
 import PropTypes from 'prop-types';
 import React from 'react';
+import ReactDOMServer from 'react-dom/server';
 
-// import route urls
-import { routes } from '../../routes';
-
-// import contants
-import CONSTANTS from '../../constants';
+import Sidebar from './Sidebar';
+import Topbar from './Topbar';
 
 
-const Default = props => {
-  const { activeSidebarIndex, title, childProps } = props;
-  const { APP_TITLE: sidebarTitle, TELEGRAM_CHANNEL, WHO_URL } = CONSTANTS;
-
-  const sidebar = (
-    <div className="sidebar-container">
-      <Sidenav activeKey={`sidebar-${activeSidebarIndex || 0}`} appearance="default" className="sidebar-nav">
-        <Sidenav.Body>
-          <p className="title">{sidebarTitle}</p>
-          <Nav>
-            <Nav.Item href={routes.index} eventKey="sidebar-0" icon={<Icon icon="dashboard" />}>
-              Home
-            </Nav.Item>
-            <Nav.Item href={routes.news} eventKey="sidebar-1" icon={<Icon icon="newspaper-o" />}>
-              News
-            </Nav.Item>
-            <Nav.Item href={TELEGRAM_CHANNEL}  eventKey="sidebar-3" icon={<Icon icon="telegram" />}>
-              Telegram Channel
-            </Nav.Item>
-            <Nav.Item href={WHO_URL} eventKey="sidebar-2" icon={<Icon icon="heartbeat" />}>
-              About COVID-19
-            </Nav.Item>
-            <Nav.Item href={routes.about} eventKey="sidebar-4" icon={<Icon icon="group" />}>
-              About
-            </Nav.Item>
-          </Nav>
-        </Sidenav.Body>
-      </Sidenav>
-    </div>
-  );
+const Layout = props => {
+  const { activeNavIndex, title, childProps } = props;
 
   // Dynamic React Views
   const initScript = 'main(' + JSON.stringify(childProps).replace(/script/g, 'scr"+"ipt') + ')';
+  const mobileNavbar = ReactDOMServer.renderToString(<Topbar />);
 
   return (
     <React.Fragment>
@@ -53,9 +24,16 @@ const Default = props => {
 
       <Grid fluid className='home-container'>
         <Row className='row'>
+          {/* Desktop */}
           <Col sm={8} md={5} className='sidebar' style={{ height: '100%', maxWidth: '250px', padding: 0 }}>
-            {sidebar}
+            <Sidebar activeNavIndex={activeNavIndex}/>
           </Col>
+
+          {/* Mobile (dynamic content) */}
+          <Col colspan={24} className='topbar'>
+            <div id="layout-mobile-navbar" dangerouslySetInnerHTML={{__html: mobileNavbar}} />
+          </Col>
+
           <Col className='content-container'>
             {props.children}
           </Col>
@@ -68,14 +46,15 @@ const Default = props => {
    );
 };
 
-Default.propTypes = {
+Layout.propTypes = {
+  activeNavIndex: PropTypes.number.isRequired,
   children: PropTypes.element.isRequired,
   title: PropTypes.string.isRequired,
   componentProps: PropTypes.object,
 };
 
-Default.defaultProps = {
+Layout.defaultProps = {
   componentProps: {},
 };
 
-export default Default;
+export default Layout;

@@ -19,7 +19,7 @@ const About = props => {
   } = CONSTANTS;
 
   return (
-    <Layout activeSidebarIndex={4} title={title} childProps={props}>
+    <Layout activeNavIndex={4} title={title} childProps={props}>
       <div className='about-container'>
         <p className='title'>About <Icon icon='group'/></p>
         

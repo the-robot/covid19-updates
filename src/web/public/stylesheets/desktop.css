@@ -41,6 +41,12 @@
 }
 
 
+/* Mobile Navbar */
+.topbar {
+  display: none;
+}
+
+
 /* Card */
 .card {
   background-color: #6b6b6b;
