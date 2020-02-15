@@ -28,7 +28,7 @@ const About = props => {
             {APP_TITLE} attempts to give people updated information about Coronavirus (COVID-19) as it
             is spreading around the world. It's been developed by me, {AUTHOR_NAME} (<a href={GITHUB_PROFILE} target='_blank'>Github</a>, <a href={MY_WEBISTE} target='_blank'>Website</a>).
 
-            I have also created <a href={TELEGRAM_BOT} target='_blank'>Telegram bot</a> and <a href={TELEGRAM_CHANNEL} target='_blank'>channel</a> for COVID-19 Updates.
+            I have also created <a href={TELEGRAM_BOT} target='_blank'>Telegram bot</a> and <a href={TELEGRAM_CHANNEL} target='_blank'>channel</a> for COVID-19 updates.
           </p>
         </div>
 
