@@ -4,14 +4,15 @@
   "description": "System to get lastest information about Novel Coronavirus (2019-nCov)",
   "main": "index.js",
   "scripts": {
-    "start-bot": "node -r esm src/bot/app.js",
-    "start-scheduler": "node -r esm src/tasks/app.js",
-    "start-web": "node src/web/app.js",
-
+    "bot": "node -r esm src/bot/app.js",
+    "scheduler": "node -r esm src/tasks/app.js",
+    "web": "node -r esm src/web/app.js",
+    "react-dev": "./node_modules/watchify/bin/cmd.js -t ./node_modules/babelify/index.js src/web/views/dynamic/main.js --standalone main -o src/web/public/main.js",
+    "react-build": "./node_modules/browserify/bin/cmd.js -t ./node_modules/babelify/index.js src/web/views/dynamic/main.js --standalone main -o src/web/public/main.js",
     "setup-db": "node -r esm src/setup/run.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "the-robot",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2",
@@ -29,6 +30,16 @@
     "path": "^0.12.7",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "rss-parser": "^3.7.4"
+    "recharts": "^2.0.0-beta.1",
+    "rss-parser": "^3.7.4",
+    "rsuite": "^4.2.1"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "babel-preset-react": "^6.24.1",
+    "babelify": "^10.0.0",
+    "browserify": "^16.5.0",
+    "watchify": "^3.11.1"
   }
 }

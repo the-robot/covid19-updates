@@ -3,6 +3,8 @@ import { getDb } from '.';
 
 const { collections: COLLECTIONS, db: DATABASE } = MONGO_CONFIG;
 
+
+// Create
 const insertCoronaCase = async document => {
   const client = getDb();
   await client.connect();
@@ -95,6 +97,8 @@ const insertTweetIfNotExists = async document => {
   await client.close();
 };
 
+
+// Read
 const getNewsSources = async () => {
   const client = getDb();
   await client.connect();
@@ -116,46 +120,51 @@ const getTweetSources = async () => {
   return await dbo.collection(COLLECTIONS.tweetSource).find({}).toArray();
 };
 
-const getNews = async (offset, size) => {
+const getNews = async (offset=0, size) => {
   const client = getDb();
   await client.connect();
   const dbo = client.db(DATABASE);
   const records = await dbo.collection(COLLECTIONS.news)
     .find({})
     .sort({isoDate: -1})
-    .skip(offset)
-    .limit(size)
-    .toArray();
-  return records;
+    .skip(offset);
+  
+  if (size) {
+   return records.limit(size).toArray();
+  }
+  return records.toArray();
 };
 
-const getRedditPosts = async (offset, size) => {
+const getRedditPosts = async (offset=0, size) => {
   const client = getDb();
   await client.connect();
   const dbo = client.db(DATABASE);
   const records = await dbo.collection(COLLECTIONS.reddit)
     .find({})
     .sort({isoDate: -1})
-    .skip(offset)
-    .limit(size)
-    .toArray();
-  return records;
+    .skip(offset);
+
+  if (size) {
+  return records.limit(size).toArray();
+  }
+  return records.toArray();
 };
 
-const getTweets = async (offset, size) => {
+const getTweets = async (offset=0, size) => {
   const client = getDb();
   await client.connect();
   const dbo = client.db(DATABASE);
   const records = await dbo.collection(COLLECTIONS.tweets)
     .find({})
     .sort({isoDate: -1})
-    .skip(offset)
-    .limit(size)
-    .toArray();
-  return records;
+    .skip(offset);
+
+  if (size) {
+  return records.limit(size).toArray();
+  }
+  return records.toArray();
 };
 
-// TODO: get list of channels from DB
 const getTelegramChannels = async (offset, size) => {
   const client = getDb();
   await client.connect();
@@ -163,6 +172,39 @@ const getTelegramChannels = async (offset, size) => {
   const records = await dbo.collection(COLLECTIONS.telegramChannels).find({}).toArray();
   return records;
 };
+
+const getCountries = async () => {
+  const client = getDb();
+  await client.connect();
+  const dbo = client.db(DATABASE);
+  const records = await dbo.collection(COLLECTIONS.countries)
+    .find({})
+    .toArray();
+  return records;
+};
+
+const getOverallCases = async byLatest => {
+  const client = getDb();
+  await client.connect();
+  const dbo = client.db(DATABASE);
+  const records = await dbo.collection(COLLECTIONS.dailyOverall)
+    .find({})
+    .sort({added_date: byLatest ? -1 : 1})
+    .toArray();
+  return records;
+};
+
+const getCasesByCountry = async country => {
+  const client = getDb();
+  await client.connect();
+  const dbo = client.db(DATABASE);
+  const records = await dbo.collection(COLLECTIONS.cases)
+    .find({country: country})
+    .sort({added_date: -1})
+    .toArray();
+  return records;
+};
+
 
 export {
   // sources
@@ -172,6 +214,9 @@ export {
   getTelegramChannels,
 
   // get data
+  getCountries,
+  getOverallCases,
+  getCasesByCountry,
   getNews,
   getRedditPosts,
   getTweets,

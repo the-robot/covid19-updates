@@ -1,34 +1,266 @@
-.container {
-  margin: 0;
+/* Home Container */
+.home-container {
+  height: 100%;
+}
+
+.home-container .row {
+  height: 100%;
+}
+
+.content-container {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 
-/* Header */
-.header {
-  background-color: #EEEEEE;
-  padding: var(--layout-padding);
+/* Sidebar/Menubar */
+.sidebar {
+  height: 100%;
+  max-width: 250px;
 }
 
-.header .title {
-  font-size: 58px;
-  font-weight: bolder;
+.sidebar .sidebar-container {
+  height: 100%;
+  width: 100%;
+  max-width: 250px;
 }
 
-.header .subTitle {
-  font-size: 32px;
+.sidebar .sidebar-nav {
+  height: 100%;
+  overflow-y: scroll;
 }
 
-.header p {
-  margin: 0;
+.sidebar .title {
+  color: #ffffff;
+  font-size: 21px;
+  font-weight: bold;
+  padding: 20px;
 }
 
 
-/* Footer */
-.footer {
-  margin-top: 20px;
-  text-align: center;
+/* Mobile Navbar */
+.topbar {
+  display: none;
 }
 
-.footer .link {
+
+/* Card */
+.card {
+  background-color: #6b6b6b;
+  border-radius: 5px;
+  padding: 15px;
+  width: 100%;
+
+  margin-top: 15px;
+}
+
+.card .title {
+  color: #f5f5f5;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.card .number {
+  font-size: 28px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.card .message {
   font-size: 14px;
+}
+
+.card p {
+  color: #ffffff;
+  word-wrap: break-word;
+}
+
+
+/* Graph */
+.graphs-container {
+  margin-top: 15px;
+}
+
+.graphs-container .graph {
+  background-color: #dfe6e9;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 10px;
+  overflow-x: hidden;
+  padding: 20px;
+}
+
+.graphs-container .recharts-wrapper {
+  /* center the graphs */
+  margin: 0 auto;
+}
+
+.graphs-container .title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+/* Table */
+.table-container {
+  background-color: #f1f2f6;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 20px;
+}
+
+.table-container .title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+
+.table-container .level {
+  border-radius: 5px;
+  margin-top: -3px;
+  padding-bottom: 4px;
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 4px;
+  width: max-content;
+}
+
+.table-container .level-text {
+  color: #ffffff;
+  font-size: 10.5px;
+  font-weight: bold;
+}
+
+.table-container .rs-table, .rs-table-row, .rs-table-row-header, .rs-table-cell-content {
+  background-color: #dfe6e9 !important;
+}
+
+.table-container .rs-table-row {
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.table-container .rs-table-cell-content {
+  color: var(--primary-accent-color);
+}
+
+
+/* News Container */
+.news-container {
+  margin-top: 15px;
+}
+
+.news-container .newsfeed-container {
+  background-color: #dfe6e9;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 15px;
+}
+
+.news-container .redditfeed-container {
+  background-color: #dfe6e9;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 15px;
+  width: 49%;
+}
+
+.news-container .tweetsfeed-container {
+  background-color: #dfe6e9;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 15px;
+  width: 49%;
+}
+
+.news-container .feed {
+  height: 500px;
+  overflow: hidden;
+}
+
+.news-container .feed .title {
+  float: left;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.news-container .feed .loader {
+  align-items: center;
+  color: #8d8d8d;
+  display: flex;
+  height: 82.5%;
+  justify-content: center;
+}
+
+.news-container .feed .refresh {
+  float: right;
+}
+
+.news-container .feed .paginator {
+  margin-top: 10px;
+}
+
+.news-container .feed .paginator .page {
+  color: #8d8d8d;
+}
+
+.news-container .feed .news-list, .reddit-list, .tweets-list {
+  height: 82.5%;
+  margin-top: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.news-container .feed .news-list, .reddit-list, .tweets-list .list-title {
+  color: #5f5f5f;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.news-container .feed .news-list .rs-timeline-item-dot:before {
+  background-color: #007bff;
+}
+
+.news-container .feed .reddit-list .rs-timeline-item-dot:before {
+  background-color: #f53b57;
+}
+
+.news-container .feed .tweets-list .rs-timeline-item-dot:before {
+  background-color: #0fbcf9;
+}
+
+.news-container .feed a {
+  line-height: 25px;
+  font-size: 16px;
+}
+
+
+/* About */
+.about-container {
+  background-color: #dfe6e9;
+  margin-bottom: 15px;
+  margin-right: 15px;
+  margin-top: 15px;
+  padding: 15px;
+  width: 100%;
+}
+
+.about-container .title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.about-container .message {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.about-container .message .text {
+  font-size: 16px;
+  line-height: 25px;
 }

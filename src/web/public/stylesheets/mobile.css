@@ -1,16 +1,55 @@
-@media only screen and (max-width: 420px) {
+@media only screen and (max-width: 480px) {
   body {
     padding-left: 0px !important;
     padding-right: 0px !important;
-    width: 95%;
+    width: 100%;
   }
 
-  .header {
-    padding: 20px !important;
+  .home-container .row {
+    height: initial;
   }
 
-  .home-container {
-    padding-left: 20px !important;
-    padding-right: 20px !important;
+  /* Sidebar */
+  .sidebar {
+    display: none;
+  }
+
+  /* Mobile Navbar */
+  .topbar {
+    display: block;
+  }
+
+  .topbar .topbar-container {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+  }
+
+  .topbar .header {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    margin-left: 15px;
+  }
+
+  .topbar .header .text {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  
+  /* Content Container */
+  .content-container {
+    margin-top: 15%;
+  }
+
+  /* News */
+  .news-container .redditfeed-container {
+    width: 100%;
+  }
+  
+  .news-container .tweetsfeed-container {
+    width: 100%;
   }
 }
