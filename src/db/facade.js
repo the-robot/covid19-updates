@@ -177,13 +177,13 @@ const getCountries = async () => {
   return records;
 };
 
-const getOverallCases = async () => {
+const getOverallCases = async byLatest => {
   const client = getDb();
   await client.connect();
   const dbo = client.db(DATABASE);
   const records = await dbo.collection(COLLECTIONS.dailyOverall)
     .find({})
-    .sort({added_date: -1})
+    .sort({added_date: byLatest ? -1 : 1})
     .toArray();
   return records;
 };

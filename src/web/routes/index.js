@@ -1,6 +1,8 @@
 const express = require('express');
+const moment = require('moment');
 const router = express.Router();
 
+// routes
 const routes = require('./urls');
 
 // Database
@@ -8,62 +10,36 @@ const db = require('../../db');
 
 // Dashboard
 router.get(routes.index, async (req, res, next) => {
-  const lineData = [
-    {
-      name: 'Page A', count: 2400, amt: 2400,
-    },
-    {
-      name: 'Page B', count: 1398, amt: 2210,
-    },
-    {
-      name: 'Page C', count: 9800, amt: 2290,
-    },
-    {
-      name: 'Page D', count: 3908, amt: 2000,
-    },
-    {
-      name: 'Page E', count: 4800, amt: 2181,
-    },
-    {
-      name: 'Page F', count: 3800, amt: 2500,
-    },
-    {
-      name: 'Page G', count: 4300, amt: 2100,
-    },
-  ];
-  
-  const barData = [
-    {
-      name: 'Page A', infection: 4000, death: 2400, amt: 2400,
-    },
-    {
-      name: 'Page B', infection: 3000, death: 1398, amt: 2210,
-    },
-    {
-      name: 'Page C', infection: 2000, death: 9800, amt: 2290,
-    },
-    {
-      name: 'Page D', infection: 2780, death: 3908, amt: 2000,
-    },
-    {
-      name: 'Page E', infection: 1890, death: 4800, amt: 2181,
-    },
-    {
-      name: 'Page F', infection: 2390, death: 3800, amt: 2500,
-    },
-    {
-      name: 'Page G', infection: 3490, death: 4300, amt: 2100,
-    },
-  ];
-
-
-  // get overview data
-  const overallRecords = await db.getOverallCases();
+   // get overview data
+  const overallRecordsByLatest = await db.getOverallCases(byLatest=true);
   const overviewData = {
-    cases: overallRecords[0].cases,
-    deaths: overallRecords[0].deaths,
-    recovered: overallRecords[0].cured,
+    cases: overallRecordsByLatest[0].cases,
+    deaths: overallRecordsByLatest[0].deaths,
+    recovered: overallRecordsByLatest[0].cured,
   };
+
+  const overallRecordsByEarliest = await db.getOverallCases();
+  const infectionsGraphData = [];
+  const deathsGraphData = [];
+  const recoveredGraphData = [];
+  const infectionsDeathsGraphData = [];
+  for (let i=0; i<overallRecordsByEarliest.length; i++) {
+    let record = overallRecordsByEarliest[i];
+    let date = moment(record.added_date)
+      .subtract(1, 'days')
+      .format('DD-MM-YYYY');
+
+    // build graph data
+    infectionsGraphData.push({ name: date, count: record.cases });
+    deathsGraphData.push({ name: date, count: record.deaths });
+    recoveredGraphData.push({ name: date, count: record.cured || 0 });
+    infectionsDeathsGraphData.push({
+      name: date,
+      infection: record.cases,
+      death: record.deaths,
+    });
+  }
+
 
   // get cases & deaths by country
   const countries = await db.getCountries();
@@ -111,10 +87,10 @@ router.get(routes.index, async (req, res, next) => {
     overviewData,
 
     // Graph Data
-    infectionsGraphData: lineData,
-    deathsGraphData: lineData,
-    recoveredGraphData: lineData,
-    infectionsDeathsGraphData: barData,
+    infectionsGraphData,
+    deathsGraphData,
+    recoveredGraphData,
+    infectionsDeathsGraphData,
 
     // Table Data
     infectionsTableData,
