@@ -116,7 +116,7 @@ router.get(routes.about, (req, res, next) => {
 
 
 // API Endpoints
-router.get(`${routes.api.news}/:page/`, async (req, res, next) => {
+router.get(`${routes.api.news}:page/`, async (req, res, next) => {
   let { page } = req.params;
   // if page number is invalid, return 400
   if (!page || !utils.isNumber(page)) {
@@ -144,8 +144,8 @@ router.get(`${routes.api.news}/:page/`, async (req, res, next) => {
   });
 });
 
-router.get(`${routes.api.reddit}/:page/`, async (req, res, next) => {
-  const { page } = req.params;
+router.get(`${routes.api.reddit}:page/`, async (req, res, next) => {
+  let { page } = req.params;
   // if page number is invalid, return 400
   if (!page || !utils.isNumber(page)) {
     res.status(400).json({'error': 'invalid page number'});
@@ -172,8 +172,8 @@ router.get(`${routes.api.reddit}/:page/`, async (req, res, next) => {
   });
 });
 
-router.get(`${routes.api.tweets}/:page/`, async (req, res, next) => {
-  const { page } = req.params;
+router.get(`${routes.api.tweets}:page/`, async (req, res, next) => {
+  let { page } = req.params;
   // if page number is invalid, return 400
   if (!page || !utils.isNumber(page)) {
     res.status(400).json({'error': 'invalid page number'});

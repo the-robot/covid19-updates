@@ -135,30 +135,34 @@ const getNews = async (offset=0, size) => {
   return records.toArray();
 };
 
-const getRedditPosts = async (offset, size) => {
+const getRedditPosts = async (offset=0, size) => {
   const client = getDb();
   await client.connect();
   const dbo = client.db(DATABASE);
   const records = await dbo.collection(COLLECTIONS.reddit)
     .find({})
     .sort({isoDate: -1})
-    .skip(offset)
-    .limit(size)
-    .toArray();
-  return records;
+    .skip(offset);
+
+  if (size) {
+  return records.limit(size).toArray();
+  }
+  return records.toArray();
 };
 
-const getTweets = async (offset, size) => {
+const getTweets = async (offset=0, size) => {
   const client = getDb();
   await client.connect();
   const dbo = client.db(DATABASE);
   const records = await dbo.collection(COLLECTIONS.tweets)
     .find({})
     .sort({isoDate: -1})
-    .skip(offset)
-    .limit(size)
-    .toArray();
-  return records;
+    .skip(offset);
+
+  if (size) {
+  return records.limit(size).toArray();
+  }
+  return records.toArray();
 };
 
 const getTelegramChannels = async (offset, size) => {

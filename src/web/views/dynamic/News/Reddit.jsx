@@ -1,5 +1,8 @@
 import { Icon, IconButton, Timeline } from 'rsuite';
 import React from 'react';
+import axios from 'axios';
+
+import routes from '../../../routes/urls';
 
 
 class Reddit extends React.Component {
@@ -8,34 +11,73 @@ class Reddit extends React.Component {
 
     this.state = {
       data: [],
+      maxPage: null,
+      page: 1,
+
+      // UI states
+      loading: false,
       refreshing: false,
     }
   }
 
   componentDidMount() {
     this.setState({
-      data: [
-        {
-          title: 'Wuhan pneumonia: First death reported by mystery Chinese virus',
-          link: 'https://www.independent.co.uk/news/world/asia/virus-china-wuhan-pneumonia-deaths-sars-coronavirus-infection-a9279656.html',
-          author: 'Shaun Lintern',
-          date: '2020-02-12 21:20'
-        },
-        {
-          title: 'Wuhan pneumonia: First death reported by mystery Chinese virus',
-          link: 'https://www.independent.co.uk/news/world/asia/virus-china-wuhan-pneumonia-deaths-sars-coronavirus-infection-a9279656.html',
-          author: 'Shaun Lintern',
-          date: '2020-02-12 08:46'
-        },
-      ],
-    });
+      loading: true,
+    }, this.getData);
   }
 
   refresh = () => {
     this.setState({
+      page: 1,
       refreshing: true,
-    });
+    }, this.getData);
   }
+
+  nextPage = () => {
+    const { maxPage, page } = this.state;
+    if (page >= maxPage) {
+      return;
+    }
+
+    this.setState({
+      page: page + 1,
+      loading: true,
+    }, this.getData);
+  };
+
+  previousPage = () => {
+    const { page } = this.state;
+    if (page <= 1) {
+      return;
+    }
+
+    this.setState({
+      page: page - 1,
+      loading: true,
+    }, this.getData);
+  };
+
+  getData = () => {
+    const { page } = this.state;
+    axios.get(`${routes.api.reddit}/${page}`)
+        .then(res => {
+          const { data, page, total_pages } = res.data;
+          this.setState({
+            data,
+            page,
+            maxPage: total_pages,
+            loading: false,
+            refreshing: false,
+          });
+        })
+        .catch(err => {
+          console.log(err);
+          this.setState({
+            loading: false,
+            refreshing: false,
+          });
+        });
+  };
 
   render() {
     const { data, refreshing } = this.state;
