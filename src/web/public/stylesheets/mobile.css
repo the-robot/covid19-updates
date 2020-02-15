@@ -13,4 +13,13 @@
   .sidebar .sidebar-container {
     display: none;
   }
+
+  /* News */
+  .news-container .redditfeed-container {
+    width: 100%;
+  }
+  
+  .news-container .tweetsfeed-container {
+    width: 100%;
+  }
 }

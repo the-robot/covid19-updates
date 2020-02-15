@@ -7,7 +7,7 @@
 @import url('https://fonts.googleapis.com/css?family=Nobile&display=swap');
 
 /* Rsuite lib styling */
-@import url('./rsuite/rsuite-default.min.css');
+@import url('./rsuite/rsuite-dark.min.css');
 
 
 /* Theme */
@@ -35,6 +35,10 @@ body {
 }
 
 a {
-  color: #0A74D1;
+  color: #007bff;
   text-decoration: none;
+}
+
+a:hover {
+  color: #0056b3;
 }

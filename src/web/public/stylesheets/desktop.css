@@ -34,7 +34,7 @@
 }
 
 .sidebar .title {
-  color: var(--primary-accent-color);
+  color: #ffffff;
   font-size: 21px;
   font-weight: bold;
   padding: 20px;
@@ -79,7 +79,7 @@
 }
 
 .graphs-container .graph {
-  background-color: #f1f2f6;
+  background-color: #dfe6e9;
   border-radius: 5px;
   margin-bottom: 10px;
   margin-left: 5px;
@@ -116,8 +116,13 @@
 }
 
 .table-container .level {
-  border-radius: 4px;
-  padding: 2px;
+  border-radius: 5px;
+  margin-top: -3px;
+  padding-bottom: 4px;
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 4px;
+  width: max-content;
 }
 
 .table-container .level-text {
@@ -127,20 +132,103 @@
 }
 
 .table-container .rs-table, .rs-table-row, .rs-table-row-header, .rs-table-cell-content {
-  background-color: #f1f2f6 !important;
+  background-color: #dfe6e9 !important;
 }
 
 .table-container .rs-table-row {
   border-bottom: 1px solid #dbdbdb;
 }
 
-
-/* Footer */
-.footer {
-  margin-top: 20px;
-  text-align: center;
+.table-container .rs-table-cell-content {
+  color: var(--primary-accent-color);
 }
 
-.footer .link {
-  font-size: 14px;
+
+/* News Container */
+.news-container {
+  margin-top: 15px;
+}
+
+.news-container .newsfeed-container {
+  background-color: #dfe6e9;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 15px;
+}
+
+.news-container .redditfeed-container {
+  background-color: #dfe6e9;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 15px;
+  width: 49%;
+}
+
+.news-container .tweetsfeed-container {
+  background-color: #dfe6e9;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 15px;
+  width: 49%;
+}
+
+.news-container .feed {
+  height: 500px;
+  overflow: hidden;
+}
+
+.news-container .feed .title {
+  float: left;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.news-container .feed .loader {
+  align-items: center;
+  color: #8d8d8d;
+  display: flex;
+  height: 82.5%;
+  justify-content: center;
+}
+
+.news-container .feed .refresh {
+  float: right;
+}
+
+.news-container .feed .news-list {
+  height: 82.5%;
+  margin-top: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.news-container .feed .reddit-list, .tweets-list {
+  height: 90%;
+  margin-top: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.news-container .feed .news-list, .reddit-list, .tweets-list .list-title {
+  color: #5f5f5f;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.news-container .feed .news-list .rs-timeline-item-dot:before {
+  background-color: #007bff;
+}
+
+.news-container .feed .reddit-list .rs-timeline-item-dot:before {
+  background-color: #f53b57;
+}
+
+.news-container .feed .tweets-list .rs-timeline-item-dot:before {
+  background-color: #0fbcf9;
+}
+
+.news-container .feed .news-list, .reddit-list, .tweets-list a {
+  line-height: 25px;
+  font-size: 16px;
+  text-decoration: none;
 }

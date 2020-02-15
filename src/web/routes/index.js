@@ -104,12 +104,7 @@ router.get(routes.index, (req, res, next) => {
 
 // News
 router.get(routes.news, (req, res, next) => {
-  const page = /^\d+$/.test(req.query.page) ? parseInt(req.query.page) : 1;
-
-  res.render('news', {
-    title: 'COVID-19 - News',
-    page: page,
-  });
+  res.render('news', { title: 'COVID-19 - News' });
 });
 
 // Prevention
