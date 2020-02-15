@@ -107,11 +107,6 @@ router.get(routes.news, (req, res, next) => {
   res.render('news', { title: 'COVID-19 - News' });
 });
 
-// Prevention
-router.get(routes.prevention, (req, res, next) => {
-  res.render('prevention', { title: 'COVID-19 - Prevention' });
-});
-
 // About
 router.get(routes.about, (req, res, next) => {
   res.render('about', { title: 'COVID-19 - About' });

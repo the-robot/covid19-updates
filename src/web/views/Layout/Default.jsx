@@ -11,7 +11,7 @@ import CONSTANTS from '../../constants';
 
 const Default = props => {
   const { activeSidebarIndex, title, childProps } = props;
-  const { APP_TITLE: sidebarTitle, TELEGRAM_CHANNEL } = CONSTANTS;
+  const { APP_TITLE: sidebarTitle, TELEGRAM_CHANNEL, WHO_URL } = CONSTANTS;
 
   const sidebar = (
     <div className="sidebar-container">
@@ -20,19 +20,19 @@ const Default = props => {
           <p className="title">{sidebarTitle}</p>
           <Nav>
             <Nav.Item href={routes.index} eventKey="sidebar-0" icon={<Icon icon="dashboard" />}>
-              Dashboard
+              Home
             </Nav.Item>
             <Nav.Item href={routes.news} eventKey="sidebar-1" icon={<Icon icon="newspaper-o" />}>
               News
             </Nav.Item>
-            <Nav.Item href={routes.prevention} eventKey="sidebar-2" icon={<Icon icon="heartbeat" />}>
-              Prevention
-            </Nav.Item>
             <Nav.Item href={TELEGRAM_CHANNEL}  eventKey="sidebar-3" icon={<Icon icon="telegram" />}>
-              Telegram
+              Telegram Channel
+            </Nav.Item>
+            <Nav.Item href={WHO_URL} eventKey="sidebar-2" icon={<Icon icon="heartbeat" />}>
+              About COVID-19
             </Nav.Item>
             <Nav.Item href={routes.about} eventKey="sidebar-4" icon={<Icon icon="group" />}>
-              About
+              About Us
             </Nav.Item>
           </Nav>
         </Sidenav.Body>
