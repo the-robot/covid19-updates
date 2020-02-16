@@ -11,7 +11,7 @@ import CONSTANTS from '../../constants';
 
 const Sidebar = props => {
   const { activeNavIndex } = props;
-  const { APP_TITLE: navbarTitle, TELEGRAM_CHANNEL, WHO_URL } = CONSTANTS;
+  const { APP_TITLE: navbarTitle, TELEGRAM_BOT, TELEGRAM_CHANNEL, WHO_URL } = CONSTANTS;
 
   return (
     <div className="sidebar-container">
@@ -24,6 +24,8 @@ const Sidebar = props => {
             </Nav.Item>
             <Nav.Item href={routes.news} eventKey="sidebar-1" icon={<Icon icon="newspaper-o" />}>
               News
+            </Nav.Item><Nav.Item href={TELEGRAM_BOT} eventKey="sidebar-3" icon={<Icon icon="simplybuilt" />}>
+              Telegram Bot
             </Nav.Item>
             <Nav.Item href={TELEGRAM_CHANNEL} eventKey="sidebar-3" icon={<Icon icon="telegram" />}>
               Telegram Channel

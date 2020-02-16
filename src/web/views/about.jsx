@@ -35,7 +35,7 @@ const About = props => {
         <div className='message'>
           <p className='text'>
             COVID-19 updates website and telegram bot are both open-source. 
-            You can check out the soruce code <a href={PROJECT_URL} target='_blank'>here</a>.
+            You can check out the source code <a href={PROJECT_URL} target='_blank'>here</a>.
           </p>
         </div>
       </div>
