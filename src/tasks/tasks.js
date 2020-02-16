@@ -7,6 +7,7 @@ import {
   insertNewsIfNotExists,
   insertRedditIfNotExists,
   insertTweetIfNotExists,
+  updateCountryCase,
 } from '../db';
 import {
   getCoronaOverall,
@@ -29,6 +30,8 @@ const pullCoronaCasesData = async () => {
     // add affected country name
     await insertCountryIfNotExists(document.country);
     await insertCoronaCase(document);
+    // store individual country lastest update data
+    await updateCountryCase(document);
   });
 };
 

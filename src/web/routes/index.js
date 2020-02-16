@@ -24,58 +24,16 @@ router.get(routes.index, async (req, res, next) => {
         overallRecords[overallRecords.length - 1].added_date
       ).format('DD-MM-YYYY HH:mm'),
   };
-
   // get cases & deaths by country
-  const countries = await db.getCountries();
-  const infectionsTableData = [];
-  const deathsTableData = [];
-  for (let i=0; i<countries.length; i++) {
-    let countryCases  = await db.getCasesByCountry(countries[i].name);
-    infectionsTableData.push({
-      "id": i + 1,
-      "country": countries[i].name,
-      "count": countryCases[0].cases,
-    });
-    deathsTableData.push({
-      "id": i + 1,
-      "country": countries[i].name,
-      "count": countryCases[0].deaths,
-    });
-  }
-  // sort by count
-  infectionsTableData.sort((a, b) => {
-    if (a.count > b.count) {
-      return -1;
-    }
-    if (b.count > a.count) {
-        return 1;
-    }
-    return 0;
-  });
-  deathsTableData.sort((a, b) => {
-    if (a.count > b.count) {
-      return -1;
-    }
-    if (b.count > a.count) {
-        return 1;
-    }
-    return 0;
-  });
-
+  const countriesCasesData = await db.getCountriesLastestCases();
 
   // build prop for view
   const props = {
     title: 'COVID-19 - Dashboard',
 
-    // Overall Data
     overviewData,
-
-    // Graph Data
     overallRecords,
-
-    // Table Data
-    infectionsTableData,
-    deathsTableData,
+    countriesCasesData,
   };
 
   res.render('home', props);
