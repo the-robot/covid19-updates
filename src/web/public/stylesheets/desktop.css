@@ -79,6 +79,15 @@
 }
 
 
+/* Overview data date */
+.overview-date {
+  color: #8d8d8d;
+  font-size: 14px;
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+
 /* Graph */
 .graphs-container {
   margin-top: 15px;
@@ -151,6 +160,7 @@
 
 
 /* News Container */
+  color: #8d8d8d;
 .news-container {
   margin-top: 15px;
 }

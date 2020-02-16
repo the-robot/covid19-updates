@@ -10,7 +10,7 @@ import Layout from './Layout/Default';
 
 
 const OverviewCounts = props => {
-  const { cases, deaths, recovered } = props;
+  const { cases, deaths, recovered, lastUpdated } = props;
   return (
     <Grid fluid>
       <Row>
@@ -24,6 +24,10 @@ const OverviewCounts = props => {
           <Card color='#2ecc71' count={recovered} message={'people recovered'} title={'Recovered'} />
         </Col>
       </Row>
+
+      <Row>
+        <p className='overview-date'>Last Updated: {lastUpdated}</p>
+      </Row>
     </Grid>
   );
 };
@@ -32,6 +36,7 @@ OverviewCounts.propTypes = {
   cases: PropTypes.number.isRequired,
   deaths: PropTypes.number.isRequired,
   recovered: PropTypes.number.isRequired,
+  lastUpdated: PropTypes.string.isRequired,
 };
 
 
@@ -51,6 +56,7 @@ const Index = props => {
         cases={overviewData.cases}
         deaths={overviewData.deaths}
         recovered={overviewData.recovered}
+        lastUpdated={overviewData.last_updated}
       />
 
       {/* Dynamic Contents */}

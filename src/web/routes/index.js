@@ -20,6 +20,9 @@ router.get(routes.index, async (req, res, next) => {
     cases: overallRecords[overallRecords.length - 1].cases,
     deaths: overallRecords[overallRecords.length - 1].deaths,
     recovered: overallRecords[overallRecords.length - 1].cured,
+    last_updated: moment(
+        overallRecords[overallRecords.length - 1].added_date
+      ).format('DD-MM-YYYY HH:mm'),
   };
 
   // get cases & deaths by country
