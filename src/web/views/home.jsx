@@ -26,7 +26,7 @@ const OverviewCounts = props => {
       </Row>
 
       <Row>
-        <p className='overview-date'>Last Updated: {lastUpdated}</p>
+        <p className='overview-date'>Last updated: {lastUpdated}</p>
       </Row>
     </Grid>
   );
