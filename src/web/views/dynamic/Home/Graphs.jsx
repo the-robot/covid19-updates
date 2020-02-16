@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import moment from 'moment';
 
 import BarGraph from '../../Components/BarGraph.jsx';
 import LineGraph from '../../Components/LineGraph.jsx';
@@ -11,6 +12,12 @@ class Graphs extends React.Component {
 
     this.state = {
       width: 0,
+
+      // graph data
+      infectionsGraphData: [],
+      deathsGraphData: [],
+      recoveredGraphData: [],
+      infectionsDeathsGraphData: [],
     };
     this.containerRef = React.createRef()
   };
@@ -18,6 +25,37 @@ class Graphs extends React.Component {
   componentDidMount() {
     window.addEventListener("resize", this.handleContainerResize);
     this.handleContainerResize();
+
+    // format graph data
+    const { overallRecords } = this.props;
+    const infectionsGraphData = [];
+    const deathsGraphData = [];
+    const recoveredGraphData = [];
+    const infectionsDeathsGraphData = [];
+
+    for (let i=0; i<overallRecords.length; i++) {
+      let record = overallRecords[i];
+      let date = moment(record.added_date)
+        .subtract(1, 'days')
+        .format('DD-MM-YYYY');
+
+      // build graph data
+      infectionsGraphData.push({ name: date, count: record.cases });
+      deathsGraphData.push({ name: date, count: record.deaths });
+      recoveredGraphData.push({ name: date, count: record.cured || 0 });
+      infectionsDeathsGraphData.push({
+        name: date,
+        infection: record.cases,
+        death: record.deaths,
+      });
+    }
+
+    this.setState({
+      infectionsGraphData,
+      deathsGraphData,
+      recoveredGraphData,
+      infectionsDeathsGraphData,
+    });
   };
 
   componentWillUnmount() {
@@ -35,7 +73,7 @@ class Graphs extends React.Component {
       deathsGraphData,
       recoveredGraphData,
       infectionsDeathsGraphData,
-    } = this.props;
+    } = this.state;
 
     return (
       <div ref={this.containerRef} className='graphs-container'>
@@ -90,17 +128,11 @@ class Graphs extends React.Component {
 };
 
 Graphs.propTypes = {
-  infectionsGraphData: PropTypes.array,
-  deathsGraphData: PropTypes.array,
-  recoveredGraphData: PropTypes.array,
-  infectionsDeathsGraphData: PropTypes.array,
+  overallRecords: PropTypes.array,
 };
 
 Graphs.defaultProps = {
-  infectionsGraphData: [],
-  deathsGraphData: [],
-  recoveredGraphData: [],
-  infectionsDeathsGraphData: [],
+  overallRecords: [],
 };
 
 export default Graphs;

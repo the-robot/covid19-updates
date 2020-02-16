@@ -12,6 +12,7 @@ import {
   getCountries,
   getOverallCases,
   getCasesByCountry,
+  getCountriesLastestCases,
   getNews,
   getRedditPosts,
   getTweets,
@@ -23,6 +24,9 @@ import {
   insertNewsIfNotExists,
   insertRedditIfNotExists,
   insertTweetIfNotExists,
+
+  // update
+  updateCountryCase,
 } from './facade';
 
 const getDb = () => {
@@ -49,6 +53,7 @@ export {
   getCountries,
   getOverallCases,
   getCasesByCountry,
+  getCountriesLastestCases,
   getNews,
   getRedditPosts,
   getTweets,
@@ -59,5 +64,8 @@ export {
   insertCountryIfNotExists,
   insertNewsIfNotExists,
   insertRedditIfNotExists,
-  insertTweetIfNotExists
+  insertTweetIfNotExists,
+
+  // update
+  updateCountryCase,
 };

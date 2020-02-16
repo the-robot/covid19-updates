@@ -14,6 +14,7 @@ const MONGO_CONFIG = {
     dailyOverall: 'daily_overall',
     cases: 'cases',
     countries: 'countries',
+    countries_latest_cases: 'countries_latest_cases',
     news: 'news',
     newsSource: 'news_source',
     reddit: 'reddit',

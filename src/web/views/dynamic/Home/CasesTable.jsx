@@ -6,8 +6,56 @@ import DataTable from '../../Components/DataTable.jsx';
 
 
 class CasesTable extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      infectionsTableData: [],
+      deathsTableData: [],
+    };
+  }
+
+  componentDidMount() {
+    const { countriesCasesData } = this.props;
+    const sortByCount = (a, b) => {
+      if (a.count > b.count) {
+        return -1;
+      }
+      if (b.count > a.count) {
+          return 1;
+      }
+      return 0;
+    }
+    const infectionsTableData = [];
+    const deathsTableData = [];
+
+    // format data
+    for (let i=0; i<countriesCasesData.length; i++) {
+      let data = countriesCasesData[i];
+      infectionsTableData.push({
+        "id": i + 1,
+        "country": data.country,
+        "count": data.cases,
+      });
+      deathsTableData.push({
+        "id": i + 1,
+        "country": data.country,
+        "count": data.deaths,
+      });
+    }
+
+    // sort by count
+    infectionsTableData.sort(sortByCount);
+    deathsTableData.sort(sortByCount);
+
+    this.setState({
+      infectionsTableData,
+      deathsTableData
+    });
+  }
+
   render() {
-    const { infectionsTableData, deathsTableData } = this.props;
+    const { infectionsTableData, deathsTableData } = this.state;
 
     return (
       <Grid fluid>
@@ -25,13 +73,11 @@ class CasesTable extends React.Component {
 }
 
 CasesTable.propTypes = {
-  infectionsTableData: PropTypes.array,
-  deathsTableData: PropTypes.array,
+  countriesCasesData: PropTypes.array,
 }
 
 CasesTable.defaultProps = {
-  infectionsTableData: [],
-  deathsTableData: [],
+  countriesCasesData: [],
 }
 
 export default CasesTable;

@@ -25,7 +25,7 @@ class Topbar extends React.Component {
               <Nav.Item href={routes.index}>Home</Nav.Item>
               <Nav.Item href={routes.news}>News</Nav.Item>
               <Dropdown title="More" placement='bottomEnd'>
-                <Dropdown.Item href={TELEGRAM_CHANNEL} >Telegram Bot</Dropdown.Item>
+                <Dropdown.Item href={TELEGRAM_CHANNEL} >Telegram Channel</Dropdown.Item>
                 <Dropdown.Item href={WHO_URL} >About COVID-19</Dropdown.Item>
                 <Dropdown.Item href={routes.about}>About</Dropdown.Item>
               </Dropdown>

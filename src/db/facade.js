@@ -205,6 +205,41 @@ const getCasesByCountry = async country => {
   return records;
 };
 
+const getCountriesLastestCases = async () => {
+  const client = getDb();
+  await client.connect();
+  const dbo = client.db(DATABASE);
+  const records = await dbo.collection(COLLECTIONS.countries_latest_cases)
+    .find({})
+    .toArray();
+  return records;
+}
+
+
+// Update
+const updateCountryCase = async document => {
+  const client = getDb();
+  await client.connect();
+  const dbo = client.db(DATABASE);
+
+  // find and create if not exists
+  const existingRecord = await dbo.collection(COLLECTIONS.countries_latest_cases).findOne({ country: document.country });
+  if (existingRecord === null) {
+     // get added date
+    document.added_date = new Date(new Date().toUTCString());
+    await dbo.collection(COLLECTIONS.countries_latest_cases).insertOne(document);
+  } else {
+    console.log('updating')
+    document.added_date = new Date(new Date().toUTCString());
+    await dbo.collection(COLLECTIONS.countries_latest_cases).updateOne(
+      {_id: existingRecord._id},
+      {$set: document}
+    );
+  }
+
+  await client.close();
+};
+
 
 export {
   // sources
@@ -217,6 +252,7 @@ export {
   getCountries,
   getOverallCases,
   getCasesByCountry,
+  getCountriesLastestCases,
   getNews,
   getRedditPosts,
   getTweets,
@@ -228,4 +264,7 @@ export {
   insertNewsIfNotExists,
   insertRedditIfNotExists,
   insertTweetIfNotExists,
+
+  // update
+  updateCountryCase,
 };
