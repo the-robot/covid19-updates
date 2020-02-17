@@ -142,11 +142,13 @@ const broadcastCountryCases = async () => {
 }
 
 const broadcastLatestNews = async (channels, news) => {
-  const message = `<a href="${news.link}">${news.title}</a> <code>(${news.articleSource.short_name})</code>`; 
-  // send broadcast message to subscribed channels
-  for (let i=0; i < channels.length; i++) {
-    if (channels[i].sendWithPreview) {
-      sendMessage(channels[i].name, message, {parse_mode : "HTML"});
+  for (let i=0; i<news.length; i++) {
+    let message = `<a href="${news[i].link}">${news[i].title}</a> <code>(${news[i].articleSource.short_name})</code>`; 
+    // send broadcast message to subscribed channels
+    for (let j=0; j<channels.length; j++) {
+      if (channels[j].sendWithPreview) {
+        sendMessage(channels[j].name, message, {parse_mode : "HTML"});
+      }
     }
   }
 };
