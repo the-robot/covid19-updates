@@ -53,14 +53,28 @@ const pullTweets = async () => {
 
 const pullNewsAndBroadcast = async () => {
   const news = await getNewsFromRss();
+  const toBroadcast = [];
+
   news.forEach(async document => {
     delete document.categories;
     const added = await insertNewsIfNotExists(document);
     // if added means have not broadcasted, so broadcast
     if (added) {
       broadcastLatestNews(document);
+      toBroadcast.push(document);
     }
   });
+  if (toBroadcast.length === 0) {
+    return;
+  }
+
+  // get list of channels
+  const channels = await getTelegramChannels();
+  if (!channels || channels.length === 0) {
+    return;
+  }
+  await broadcastLatestNews(channels, toBroadcast);
+  await broadcastLatestNewsAsList(channels, toBroadcast);
 };
 
 
@@ -127,18 +141,29 @@ const broadcastCountryCases = async () => {
   }
 }
 
-const broadcastLatestNews = async (news) => {
+const broadcastLatestNews = async (channels, news) => {
   const message = `<a href="${news.link}">${news.title}</a> <code>(${news.articleSource.short_name})</code>`; 
-  const channels = await getTelegramChannels();
-  if (!channels || channels.length === 0) {
-    return;
-  }
-
   // send broadcast message to subscribed channels
   for (let i=0; i < channels.length; i++) {
     if (channels[i].sendWithPreview) {
       sendMessage(channels[i].name, message, {parse_mode : "HTML"});
-    } else {
+    }
+  }
+};
+
+const broadcastLatestNewsAsList = async (channels, news) => {
+  const buildInHtml = news => {
+    let reply = ``;
+    for (let i=0; i<news.length; i+=1) {
+      reply += `${i+1}. <a href="${news[i].link}">${news[i].title}</a> <code>(${news[i].articleSource.short_name})</code>\n\n`;
+    }
+    return reply;
+  };
+
+  const message = buildInHtml(news);
+  // send broadcast message to subscribed channels
+  for (let i=0; i < channels.length; i++) {
+    if (channels[i].sendWithPreview === false) {
       sendMessage(channels[i].name, message, {parse_mode: "HTML", disable_web_page_preview: true});
     }
   }
