@@ -55,14 +55,15 @@ const pullNewsAndBroadcast = async () => {
   const news = await getNewsFromRss();
   const toBroadcast = [];
 
-  news.forEach(async document => {
+  for (let i=0; i<news.length; i++) {
+    let document = news[i];
     delete document.categories;
     const added = await insertNewsIfNotExists(document);
     // if added means have not broadcasted, so broadcast
     if (added) {
       toBroadcast.push(document);
     }
-  });
+  }
   if (toBroadcast.length === 0) {
     return;
   }
