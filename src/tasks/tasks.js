@@ -128,7 +128,7 @@ const broadcastCountryCases = async () => {
 }
 
 const broadcastLatestNews = async (news) => {
-  const message = `<a href="${news.link}">${news.title}</a> <code>(${news.articleSource.short_name})</code>\n\n`; 
+  const message = `<a href="${news.link}">${news.title}</a> <code>(${news.articleSource.short_name})</code>`; 
   const channels = await getTelegramChannels();
   if (!channels || channels.length === 0) {
     return;
@@ -136,7 +136,11 @@ const broadcastLatestNews = async (news) => {
 
   // send broadcast message to subscribed channels
   for (let i=0; i < channels.length; i++) {
-    sendMessage(channels[i].name, message, {parse_mode : "HTML"});
+    if (channels[i].sendWithPreview) {
+      sendMessage(channels[i].name, message, {parse_mode : "HTML"});
+    } else {
+      sendMessage(channels[i].name, message, {parse_mode: "HTML", disable_web_page_preview: true});
+    }
   }
 };
 
