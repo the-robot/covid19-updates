@@ -160,7 +160,6 @@
 
 
 /* News Container */
-  color: #8d8d8d;
 .news-container {
   margin-top: 15px;
 }
@@ -169,13 +168,17 @@
   background-color: #dfe6e9;
   border-radius: 5px;
   margin-bottom: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
   padding: 15px;
 }
 
 .news-container .redditfeed-container {
   background-color: #dfe6e9;
   border-radius: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  margin-left: 5px;
+  margin-right: 8px;
   padding: 15px;
   width: 49%;
 }
@@ -183,7 +186,8 @@
 .news-container .tweetsfeed-container {
   background-color: #dfe6e9;
   border-radius: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  margin-left: 10px;
   padding: 15px;
   width: 49%;
 }
@@ -233,15 +237,15 @@
 }
 
 .news-container .feed .news-list .rs-timeline-item-dot:before {
-  background-color: #007bff;
+  background-color: #2ecc71;
 }
 
 .news-container .feed .reddit-list .rs-timeline-item-dot:before {
-  background-color: #f53b57;
+  background-color: #c0392b;
 }
 
 .news-container .feed .tweets-list .rs-timeline-item-dot:before {
-  background-color: #0fbcf9;
+  background-color: #00acee;
 }
 
 .news-container .feed a {

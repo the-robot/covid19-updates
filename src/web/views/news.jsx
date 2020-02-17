@@ -26,7 +26,7 @@ const News = props => {
           </Col>
         </Row>
 
-        <Row>
+        <Row className='reddit-tweet-feed-container'>
           <Col xs={24} sm={11} className='redditfeed-container'>
             <div id="news-reddit" dangerouslySetInnerHTML={{__html: redditHtml}} />
           </Col>
