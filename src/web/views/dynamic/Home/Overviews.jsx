@@ -32,7 +32,7 @@ class Overviews extends React.Component {
       }
       lastUpdated = moment(
         countriesCasesData[0].added_date
-      ).format('DD-MM-YYYY HH:mm ZZ');
+      ).format('DD-MM-YYYY HH:mm');
     }
     
     this.setState({

@@ -58,7 +58,7 @@ router.get(`${routes.api.news}:page/`, async (req, res, next) => {
       title: newsData[i].title,
       link: newsData[i].link,
       author: newsData[i].articleSource.name,
-      date: moment(newsData[i].isoDate).format('DD-MM-YYYY HH:mm ZZ'),
+      date: moment(newsData[i].isoDate).format('DD-MM-YYYY HH:mm'),
     });
   }
 
@@ -86,7 +86,7 @@ router.get(`${routes.api.reddit}:page/`, async (req, res, next) => {
       title: redditPostsData[i].title,
       link: redditPostsData[i].link,
       author: redditPostsData[i].articleSource.name,
-      date: moment(redditPostsData[i].isoDate).format('DD-MM-YYYY HH:mm ZZ'),
+      date: moment(redditPostsData[i].isoDate).format('DD-MM-YYYY HH:mm'),
     });
   }
 
@@ -114,7 +114,7 @@ router.get(`${routes.api.tweets}:page/`, async (req, res, next) => {
       title: tweetsData[i].title,
       link: tweetsData[i].link,
       author: tweetsData[i].articleSource.name,
-      date: moment(tweetsData[i].isoDate).format('DD-MM-YYYY HH:mm ZZ'),
+      date: moment(tweetsData[i].isoDate).format('DD-MM-YYYY HH:mm'),
     });
   }
 
