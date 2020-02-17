@@ -31,22 +31,22 @@ const getCoronaDataTask = new CronJob('0 * * * *', () => {
   });
 });
 
-const getRedditTask = new CronJob('*/5 * * * *', () => {
-  // NOTE: run every 5 mins
+const getRedditTask = new CronJob('*/10 * * * *', () => {
+  // NOTE: run every 10 mins
   pullReddit().then(() => {
     console.log('[+] Pull Coronavirus Reddit Posts');
   });
 });
 
-const getTweetsTask = new CronJob('*/5 * * * *', () => {
-  // NOTE: run every 5 mins
+const getTweetsTask = new CronJob('*/10 * * * *', () => {
+  // NOTE: run every 10 mins
   pullTweets().then(() => {
     console.log('[+] Pull Coronavirus Tweets');
   });
 });
 
-const getNewsAndBroadcastTask = new CronJob('*/5 * * * *', () => {
-  // NOTE: run every 5 mins
+const getNewsAndBroadcastTask = new CronJob('*/10 * * * *', () => {
+  // NOTE: run every 10 mins
   pullNewsAndBroadcast().then(() => {
     console.log('[+] Pull Coronavirus News & Broadcasting');
   });
