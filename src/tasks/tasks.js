@@ -60,7 +60,6 @@ const pullNewsAndBroadcast = async () => {
     const added = await insertNewsIfNotExists(document);
     // if added means have not broadcasted, so broadcast
     if (added) {
-      broadcastLatestNews(document);
       toBroadcast.push(document);
     }
   });
