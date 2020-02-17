@@ -16,13 +16,19 @@ const PAGINATION_SIZE = 20;
 router.get(routes.index, async (req, res, next) => {
   // get overall cases data
   const overallRecords = await db.getOverallCases();
+  // const overviewData = {
+  //   cases: overallRecords[overallRecords.length - 1].cases,
+  //   deaths: overallRecords[overallRecords.length - 1].deaths,
+  //   recovered: overallRecords[overallRecords.length - 1].cured,
+  //   last_updated: moment(
+  //       overallRecords[overallRecords.length - 1].added_date
+  //     ).format('DD-MM-YYYY HH:mm'),
+  // };
   const overviewData = {
-    cases: overallRecords[overallRecords.length - 1].cases,
-    deaths: overallRecords[overallRecords.length - 1].deaths,
-    recovered: overallRecords[overallRecords.length - 1].cured,
-    last_updated: moment(
-        overallRecords[overallRecords.length - 1].added_date
-      ).format('DD-MM-YYYY HH:mm'),
+    cases: 0,
+    deaths: 0,
+    recovered: 0,
+    last_updated: 0
   };
   // get cases & deaths by country
   const countriesCasesData = await db.getCountriesLastestCases();

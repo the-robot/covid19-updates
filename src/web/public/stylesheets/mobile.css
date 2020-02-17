@@ -50,11 +50,6 @@
   }
   
   .news-container .tweetsfeed-container {
-    margin-left: 5px;
     width: 100%;
-  }
-
-  .news-container .reddit-tweet-feed-container {
-    margin-right: 5px;
   }
 }
