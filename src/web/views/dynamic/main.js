@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import Topbar from '../Layout/Topbar.jsx';
 
 // home
+import Overviews from './Home/Overviews.jsx';
 import CasesTable from './Home/CasesTable.jsx';
 import Graphs from './Home/Graphs.jsx';
 
@@ -26,8 +27,15 @@ module.exports = data => {
   }
 
   // views/home.jsx
+  const homeOverviews = document.getElementById('home-overviews');
   const homeGraphs = document.getElementById('home-graphs');
   const homeCasesTable = document.getElementById('home-cases-tables');
+  if (homeOverviews) {
+    ReactDOM.hydrate(
+      <Overviews {...data} />,
+      homeOverviews
+    );
+  }
   if (homeGraphs) {
     ReactDOM.hydrate(
       <Graphs {...data} />,

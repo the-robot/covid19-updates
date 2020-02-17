@@ -19,29 +19,9 @@ router.get(routes.index, async (req, res, next) => {
   // get cases & deaths by country
   const countriesCasesData = await db.getCountriesLastestCases();
 
-  // overdata
-  const overviewData = {
-    cases: 0,
-    deaths: 0,
-    recovered: 0,
-    last_updated: null
-  };
-  if (countriesCasesData) {
-    for (let i=0; i<countriesCasesData.length; i++) {
-      overviewData.cases += countriesCasesData[i].cases || 0;
-      overviewData.deaths += countriesCasesData[i].deaths || 0;
-      overviewData.recovered += countriesCasesData[i].cured || 0;
-    }
-    overviewData.last_updated = moment(
-      countriesCasesData[0].added_date
-    ).format('DD-MM-YYYY HH:mm');
-  }
-
   // build prop for view
   const props = {
     title: 'COVID-19 - Dashboard',
-
-    overviewData,
     overallRecords,
     countriesCasesData,
   };
@@ -78,7 +58,7 @@ router.get(`${routes.api.news}:page/`, async (req, res, next) => {
       title: newsData[i].title,
       link: newsData[i].link,
       author: newsData[i].articleSource.name,
-      date: moment(newsData[i].isoDate).format('DD-MM-YYYY HH:mm'),
+      date: moment(newsData[i].isoDate).format('DD-MM-YYYY HH:mm ZZ'),
     });
   }
 
@@ -106,7 +86,7 @@ router.get(`${routes.api.reddit}:page/`, async (req, res, next) => {
       title: redditPostsData[i].title,
       link: redditPostsData[i].link,
       author: redditPostsData[i].articleSource.name,
-      date: moment(redditPostsData[i].isoDate).format('DD-MM-YYYY HH:mm'),
+      date: moment(redditPostsData[i].isoDate).format('DD-MM-YYYY HH:mm ZZ'),
     });
   }
 
@@ -134,7 +114,7 @@ router.get(`${routes.api.tweets}:page/`, async (req, res, next) => {
       title: tweetsData[i].title,
       link: tweetsData[i].link,
       author: tweetsData[i].articleSource.name,
-      date: moment(tweetsData[i].isoDate).format('DD-MM-YYYY HH:mm'),
+      date: moment(tweetsData[i].isoDate).format('DD-MM-YYYY HH:mm ZZ'),
     });
   }
 
