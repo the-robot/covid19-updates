@@ -29,9 +29,9 @@ const pullCoronaCasesData = async () => {
   countries.forEach(async document => {
     // add affected country name
     await insertCountryIfNotExists(document.country);
-    await insertCoronaCase(document);
+    await insertCoronaCase({...document});
     // store individual country lastest update data
-    await updateCountryCase(document);
+    await updateCountryCase({...document});
   });
 };
 

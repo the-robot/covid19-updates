@@ -229,7 +229,6 @@ const updateCountryCase = async document => {
     document.added_date = new Date(new Date().toUTCString());
     await dbo.collection(COLLECTIONS.countries_latest_cases).insertOne(document);
   } else {
-    console.log('updating')
     document.added_date = new Date(new Date().toUTCString());
     await dbo.collection(COLLECTIONS.countries_latest_cases).updateOne(
       {_id: existingRecord._id},
