@@ -56,8 +56,14 @@ const getCoronaCountries = async () => {
         cell.children[0].children[0].data ||
         // country name with link has another level
         cell.children[0].children[0].children[0].data ||
+        cell.children[0].children[0].children[0].children[0].data ||
         ''
       );
+      country = country.trim();
+      if (country.length === 0) {
+        // parse with hyperlink
+        country = cell.children[0].next.children[0].data || ''
+      }
       result.push({ country: country.trim() || '' });
     }
     // get cases
