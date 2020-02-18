@@ -1,6 +1,7 @@
 import { ButtonToolbar, Icon, IconButton, Timeline } from 'rsuite';
 import React from 'react';
 import axios from 'axios';
+import moment from 'moment';
 
 import routes from '../../../routes/urls';
 
@@ -62,6 +63,11 @@ class Tweets extends React.Component {
     axios.get(`${routes.api.tweets}${page}`)
         .then(res => {
           const { data, page, total_pages } = res.data;
+          // format date data
+          for (let i=0; i<data.length; i++) {
+            data[i].date = moment(data[i].date).format('DD-MM-YYYY HH:mm');
+          }
+
           this.setState({
             data,
             page,

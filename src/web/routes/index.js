@@ -1,5 +1,4 @@
 const express = require('express');
-const moment = require('moment');
 const router = express.Router();
 
 const utils = require('../views/utils');
@@ -58,7 +57,7 @@ router.get(`${routes.api.news}:page/`, async (req, res, next) => {
       title: newsData[i].title,
       link: newsData[i].link,
       author: newsData[i].articleSource.name,
-      date: moment(newsData[i].isoDate).format('DD-MM-YYYY HH:mm'),
+      date: newsData[i].isoDate,
     });
   }
 
@@ -86,7 +85,7 @@ router.get(`${routes.api.reddit}:page/`, async (req, res, next) => {
       title: redditPostsData[i].title,
       link: redditPostsData[i].link,
       author: redditPostsData[i].articleSource.name,
-      date: moment(redditPostsData[i].isoDate).format('DD-MM-YYYY HH:mm'),
+      date: redditPostsData[i].isoDate,
     });
   }
 
@@ -114,7 +113,7 @@ router.get(`${routes.api.tweets}:page/`, async (req, res, next) => {
       title: tweetsData[i].title,
       link: tweetsData[i].link,
       author: tweetsData[i].articleSource.name,
-      date: moment(tweetsData[i].isoDate).format('DD-MM-YYYY HH:mm'),
+      date: tweetsData[i].isoDate,
     });
   }
 
