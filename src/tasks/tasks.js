@@ -27,6 +27,11 @@ const pullCoronaOverallData = async () => {
 const pullCoronaCasesData = async () => {
   const countries = await getCoronaCountries();
   countries.forEach(async document => {
+    // if country name is empty, skip
+    if (!document.country) {
+      return;
+    }
+
     // add affected country name
     await insertCountryIfNotExists(document.country);
     await insertCoronaCase({...document});
@@ -36,6 +41,11 @@ const pullCoronaCasesData = async () => {
 const pullLatestCountryCasesData = async () => {
   const countries = await getCoronaCountries();
   countries.forEach(async document => {
+    // if country name is empty, skip
+    if (!document.country) {
+      return;
+    }
+
     // store individual country lastest update data
     await updateCountryCase({...document});
   });
