@@ -30,6 +30,12 @@ const pullCoronaCasesData = async () => {
     // add affected country name
     await insertCountryIfNotExists(document.country);
     await insertCoronaCase({...document});
+  });
+};
+
+const pullLatestCountryCasesData = async () => {
+  const countries = await getCoronaCountries();
+  countries.forEach(async document => {
     // store individual country lastest update data
     await updateCountryCase({...document});
   });
@@ -175,6 +181,7 @@ const broadcastLatestNewsAsList = async (channels, news) => {
 export {
   pullCoronaCasesData,
   pullCoronaOverallData,
+  pullLatestCountryCasesData,
   pullNewsAndBroadcast,
   pullReddit,
   pullTweets,

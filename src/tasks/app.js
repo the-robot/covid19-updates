@@ -8,6 +8,7 @@ import {
   // data pulling methods
   pullCoronaCasesData,
   pullCoronaOverallData,
+  pullLatestCountryCasesData,
   pullNewsAndBroadcast,
   pullReddit,
   pullTweets,
@@ -24,9 +25,16 @@ const getCoronaOverallDataTask = new CronJob('0 0 * * *', () => {
   });
 });
 
-const getCoronaDataTask = new CronJob('0 * * * *', () => {
-  // NOTE: run every hour
+const getCoronaDataTask = new CronJob('0 */12 * * *', () => {
+  // NOTE: run every 12 hour
   pullCoronaCasesData().then(() => {
+    console.log('[+] Pull Coronavirus Cases Data');
+  });
+});
+
+const getLatestCoronaDataTask = new CronJob('0 * * * *', () => {
+  // NOTE: run hourly latest data
+  pullLatestCountryCasesData().then(() => {
     console.log('[+] Pull Coronavirus Cases Data');
   });
 });
@@ -66,6 +74,7 @@ const broadcastCountryCasesTask = new CronJob('0 0 * * *', () => {
 // start tasks
 getCoronaOverallDataTask.start();
 getCoronaDataTask.start();
+getLatestCoronaDataTask.start();
 getRedditTask.start();
 getTweetsTask.start();
 getNewsAndBroadcastTask.start();
