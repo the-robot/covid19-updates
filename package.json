@@ -7,8 +7,8 @@
     "bot": "NODE_ENV=production node -r esm src/bot/app.js",
     "scheduler": "NODE_ENV=production node -r esm src/tasks/app.js",
     "web": "NODE_ENV=production node -r esm src/web/app.js",
-    "react-dev": "./node_modules/watchify/bin/cmd.js -t ./node_modules/babelify/index.js src/web/views/dynamic/main.js --standalone main -o src/web/public/main.js",
-    "react-build": "./node_modules/browserify/bin/cmd.js -t ./node_modules/babelify/index.js src/web/views/dynamic/main.js --standalone main | ./node_modules/terser/bin/terser --compress --mangle -o src/web/public/main.js",
+    "react-dev": "./node_modules/watchify/bin/cmd.js -t ./node_modules/babelify/index.js src/web/views/dynamic/main.js --standalone main -o src/web/public/js/main.js",
+    "react-build": "./node_modules/browserify/bin/cmd.js -t ./node_modules/babelify/index.js src/web/views/dynamic/main.js --standalone main | ./node_modules/terser/bin/terser --compress --mangle -o src/web/public/js/main.js",
     "setup-db": "node -r esm src/setup/run.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

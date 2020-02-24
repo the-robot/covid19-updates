@@ -40,7 +40,7 @@ const Layout = props => {
         </Row>
       </Grid>
 
-      <script src="/main.js" />
+      <script src="/js/main.js" />
       <script dangerouslySetInnerHTML={{__html: initScript}} />
     </React.Fragment>
    );
