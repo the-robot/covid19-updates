@@ -5,8 +5,8 @@ services:
     container_name: corona-db
 
     volumes:
-      - ~/.docker/mongodb/data/db/:/data/db/
-      - ~/.docker/mongodb/data/log/:/var/log/mongodb/
+      - ~/.docker/corona-mongodb/data/db/:/data/db/
+      - ~/.docker/corona-mongodb/data/log/:/var/log/mongodb/
       - ./.docker/mongodb/initdb.d/:/docker-entrypoint-initdb.d/
 
     env_file:
