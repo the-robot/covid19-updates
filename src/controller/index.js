@@ -32,7 +32,7 @@ const getCoronaCountries = async () => {
 
   // get HTML and parse death rates
   const html = cheerio.load(response.data)
-  const countriesTable = html('table#table3');
+  const countriesTable = html('table#main_table_countries');
   const countriesTableCells = countriesTable.children('tbody').children('tr').children('td');
 
   // NOTE: this will change when table format change in website
@@ -46,7 +46,8 @@ const getCoronaCountries = async () => {
   const criticalColIndex = 6;
   const regionColIndex = 7;
 
-  for (let i=0; i<countriesTableCells.length; i+=1) {
+  // minus totalColumns to skip last row, which is total
+  for (let i=0; i<countriesTableCells.length - totalColumns; i+=1) {
     const cell = countriesTableCells[i];
 
     // get country
@@ -107,6 +108,8 @@ const getCoronaCountries = async () => {
       result[result.length-1].region = region.trim() || '';
     }
   }
+
+  console.log(result)
 
   return result;
 };
