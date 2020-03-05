@@ -108,7 +108,7 @@ const broadcastCountryCases = async () => {
     let reply = `<b>Confirmed Cases & Deaths</b>\n\n`;
 
     for (let i=0; i<countries.length; i+=1) {
-      reply += `<i><b>${i+1}. ${countries[i].country}</b></i> (${countries[i].region})\n`;
+      reply += `<i><b>${i+1}. ${countries[i].country}</b></i>\n`;
       reply += `Cases: ${countries[i].cases}\n`;
       // reply += parseInt(countries[i].todayCases) > 0
       //   ? `New Cases: ${countries[i].todayCases}\n`
