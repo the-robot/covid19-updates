@@ -36,15 +36,15 @@ const getCoronaCountries = async () => {
   const countriesTableCells = countriesTable.children('tbody').children('tr').children('td');
 
   // NOTE: this will change when table format change in website
-  const totalColumns = 8;
+  const totalColumns = 9;
   const countryColIndex = 0;
   const casesColIndex = 1;
   const todayCasesColIndex = 2;
   const deathsColIndex = 3;
   const todayDeathsColIndex = 4;
   const curedColIndex = 5;
-  const criticalColIndex = 6;
-  const regionColIndex = 7;
+  const criticalColIndex = 7;
+  // const regionColIndex = 7;
 
   // minus totalColumns to skip last row, which is total
   for (let i=0; i<countriesTableCells.length - totalColumns; i+=1) {
@@ -52,6 +52,8 @@ const getCoronaCountries = async () => {
 
     // get country
     if (i % totalColumns === countryColIndex) {
+      console.log("\n\n=====")
+      console.log(cell)
       let country = (
         cell.children[0].data ||
         cell.children[0].children[0].data ||
@@ -60,6 +62,8 @@ const getCoronaCountries = async () => {
         cell.children[0].children[0].children[0].children[0].data ||
         ''
       );
+      console.log(country);
+
       country = country.trim();
       if (country.length === 0) {
         // parse with hyperlink
@@ -98,15 +102,15 @@ const getCoronaCountries = async () => {
       result[result.length-1].critical = parseInt(critical.trim().replace(/,/g, "") || '0', 10);
     }
     // get region
-    if (i % totalColumns === regionColIndex) {
-      let region = (
-        cell.children[0].data ||
-        cell.children[0].children[0].data ||
-        cell.children[0].children[0].children[0].data ||
-        ''
-      );
-      result[result.length-1].region = region.trim() || '';
-    }
+    // if (i % totalColumns === regionColIndex) {
+    //   let region = (
+    //     cell.children[0].data ||
+    //     cell.children[0].children[0].data ||
+    //     cell.children[0].children[0].children[0].data ||
+    //     ''
+    //   );
+    //   result[result.length-1].region = region.trim() || '';
+    // }
   }
 
   console.log(result)
