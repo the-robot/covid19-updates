@@ -52,8 +52,6 @@ const getCoronaCountries = async () => {
 
     // get country
     if (i % totalColumns === countryColIndex) {
-      console.log("\n\n=====")
-      console.log(cell)
       let country = (
         cell.children[0].data ||
         cell.children[0].children[0].data ||
@@ -62,7 +60,6 @@ const getCoronaCountries = async () => {
         cell.children[0].children[0].children[0].children[0].data ||
         ''
       );
-      console.log(country);
 
       country = country.trim();
       if (country.length === 0) {
@@ -112,8 +109,6 @@ const getCoronaCountries = async () => {
     //   result[result.length-1].region = region.trim() || '';
     // }
   }
-
-  console.log(result)
 
   return result;
 };
