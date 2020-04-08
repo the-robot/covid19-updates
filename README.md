@@ -1,5 +1,6 @@
 ## NOTICE
 For some reasons I decided to shut down the service. However, feel free to clone this and continue running the service.
+For news related data, I have collected over the past 3 months, you can checkout out [here](https://github.com/the-robot/covid19-news-data).
 
 ## What is Coronavirus?
 
