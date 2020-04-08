@@ -22,6 +22,8 @@ I also have a channel, [COVID-19 Updates](https://t.me/novelcov19) `(@novelcov19
 
 <img src="https://i.imgur.com/JRA5zwY.jpg" alt="screenshot" width="300" height="600">
 
+<img src="https://i.imgur.com/hC0HWcW.jpg" alt="screenshot" width="300">
+
 ## COVID-19 Website
 
 I have also created a website to see coronavirus cases and news easily. [COVID-19 Website](https://covid19.khant.dev).
